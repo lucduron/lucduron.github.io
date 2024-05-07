@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <xsl:include href="_avisbat-main.xsl"/>
+  <xsl:include href="avisbat-main.xsl"/>
 
   <xsl:template match="RIS_Message">
     <html lang="fr">
