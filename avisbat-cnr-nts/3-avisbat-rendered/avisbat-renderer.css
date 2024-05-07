@@ -1,0 +1,49 @@
+﻿
+body {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	margin: auto;
+	max-width: 800px;
+}
+
+h1  {
+    text-align: center;
+}
+
+h2 {
+	border-bottom: 1px solid black;
+}
+
+h2.CAUTIO {
+    color: orange;
+}
+
+h2.NOLIM {
+    color: green;
+}
+
+h2.OBSTRU {
+    color: red;
+}
+
+ul.tirets {
+    list-style-type: "- ";
+}
+
+body > ul > li > strong {
+    font-size: 1.3rem;
+}
+
+dt {
+	font-weight: bold;
+	margin-top: 2rem;
+}
+
+dd {
+    margin-inline-start: 0;
+}
+
+pre {
+    margin-top: 0;
+	font-family: serif;
+}
