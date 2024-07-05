@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--FRA_FR_2024_00007.xml-->
+<RIS_Message xmlns="http://www.ris.eu/nts/4.0.4.0">
+  <!--Clôture des RNPC sur le Secteur 1-->
+  <identification>
+    <from>VNF2000+</from>
+    <originator>Service Fluvial Lyonnais</originator>
+    <country_code>FR</country_code>
+    <language_code>FR</language_code>
+    <date_issue>2024-01-02T15:30:00+02:00</date_issue>
+  </identification>
+  <ftm>
+    <!-- Identifiant CNR (l'API VNF remplacera par ceux de VNF) -->
+    <nts_number>
+      <organisation>CNR</organisation>
+      <year>2024</year>
+      <number>1</number>
+      <serial_number>1</serial_number>
+    </nts_number>
+    <subject_code>INFSER</subject_code>
+    <validity_period>
+      <date_start>2024-01-02+02:00</date_start>
+      <!--<date_end></date_end>-->
+    </validity_period>
+    <contents>Restrictions de Navigation en Période de Crue (RNPC) levées sur le Secteur 1.
+
+Écluses concernées :
+- Pierre Bénite (Ouverte dans les 2 sens)
+- Vaugris (Ouverte dans les 2 sens)
+- Sablons (Ouverte dans les 2 sens)
+- Gervans (Ouverte dans les 2 sens)
+- Bourg-lès-Valence (Ouverte dans le sens montant)</contents>
+    <source>Service Fluvial Lyonnais</source>
+    <reason_code>DECLEV</reason_code>
+    <!-- Les liens vers les fichiers PDF générés par VNF seront insérés ici -->
+    <!-- Tous les tronçons du secteur -->
+    <fairway_section>
+      <geo_object>
+        <id>FRXXXVA2560000000003</id>
+        <id>FRXXXVN2550000001015</id>
+        <name>Rhône</name>
+        <type_code>FWY</type_code>
+        <coordinate>
+          <lat>45 43.7085 N</lat>
+          <long>4 49.1781 E</long>
+        </coordinate>
+        <coordinate>
+          <lat>44 59.5526 N</lat>
+          <long>4 51.9658 E</long>
+        </coordinate>
+        <fairway_name>Du PK 0.3 "aval Saône" au PK 101.5 "amont Isère"</fairway_name>
+      </geo_object>
+      <limitation>
+        <limitation_period>
+          <date_start>2024-01-02+02:00</date_start>
+          <date_end>2024-01-02+02:00</date_end>
+          <time_start>15:30:00</time_start>
+          <time_end>15:30:00</time_end>
+        </limitation_period>
+        <limitation_code>NOLIM</limitation_code>
+        <position_code>AL</position_code>
+        <target_group>
+          <target_group_code>ALL</target_group_code>
+          <direction_code>ALL</direction_code>
+        </target_group>
+      </limitation>
+    </fairway_section>
+    <!-- Toutes les écluses du secteur -->
+    <object>
+      <geo_object>
+        <id>FRXXXVN255LOCKS00039</id>
+        <name>Ecluse de Pierre-Benite</name>
+        <type_code>LCK</type_code>
+        <coordinate>
+          <lat>45 42.1477 N</lat>
+          <long>4 50.5757 E</long>
+        </coordinate>
+        <fairway_name>Rhone 3.9 km</fairway_name>
+      </geo_object>
+      <limitation>
+        <limitation_period>
+          <date_start>2024-01-02+02:00</date_start>
+          <date_end>2024-01-02+02:00</date_end>
+          <time_start>15:30:00</time_start>
+          <time_end>15:30:00</time_end>
+        </limitation_period>
+        <limitation_code>NOLIM</limitation_code>
+        <position_code>AL</position_code>
+        <target_group>
+          <target_group_code>ALL</target_group_code>
+          <direction_code>ALL</direction_code>
+        </target_group>
+      </limitation>
+    </object>
+    <object>
+      <geo_object>
+        <id>FRXXXVN255LOCKS00338</id>
+        <name>Ecluse de Vaugris</name>
+        <type_code>LCK</type_code>
+        <coordinate>
+          <lat>45 29.6172 N</lat>
+          <long>4 49.6809 E</long>
+        </coordinate>
+        <fairway_name>Rhone 33.8 km</fairway_name>
+      </geo_object>
+      <limitation>
+        <limitation_period>
+          <date_start>2024-01-02+02:00</date_start>
+          <date_end>2024-01-02+02:00</date_end>
+          <time_start>15:30:00</time_start>
+          <time_end>15:30:00</time_end>
+        </limitation_period>
+        <limitation_code>NOLIM</limitation_code>
+        <position_code>AL</position_code>
+        <target_group>
+          <target_group_code>ALL</target_group_code>
+          <direction_code>ALL</direction_code>
+        </target_group>
+      </limitation>
+    </object>
+    <object>
+      <geo_object>
+        <id>FRXXXVN255LOCKS00597</id>
+        <name>Ecluse de Sablons</name>
+        <type_code>LCK</type_code>
+        <coordinate>
+          <lat>45 18.4188 N</lat>
+          <long>4 47.8677 E</long>
+        </coordinate>
+        <fairway_name>Rhone 59.7 km</fairway_name>
+      </geo_object>
+      <limitation>
+        <limitation_period>
+          <date_start>2024-01-02+02:00</date_start>
+          <date_end>2024-01-02+02:00</date_end>
+          <time_start>15:30:00</time_start>
+          <time_end>15:30:00</time_end>
+        </limitation_period>
+        <limitation_code>NOLIM</limitation_code>
+        <position_code>AL</position_code>
+        <target_group>
+          <target_group_code>ALL</target_group_code>
+          <direction_code>ALL</direction_code>
+        </target_group>
+      </limitation>
+    </object>
+    <object>
+      <geo_object>
+        <id>FRXXXVN255LOCKS00862</id>
+        <name>Ecluse de Gervans</name>
+        <type_code>LCK</type_code>
+        <coordinate>
+          <lat>45 6.5562 N</lat>
+          <long>4 49.2672 E</long>
+        </coordinate>
+        <fairway_name>Rhone 86.2 km</fairway_name>
+      </geo_object>
+      <limitation>
+        <limitation_period>
+          <date_start>2024-01-02+02:00</date_start>
+          <date_end>2024-01-02+02:00</date_end>
+          <time_start>15:30:00</time_start>
+          <time_end>15:30:00</time_end>
+        </limitation_period>
+        <limitation_code>NOLIM</limitation_code>
+        <position_code>AL</position_code>
+        <target_group>
+          <target_group_code>ALL</target_group_code>
+          <direction_code>ALL</direction_code>
+        </target_group>
+      </limitation>
+    </object>
+    <object>
+      <geo_object>
+        <id>FRXXXVN255LOCKS01063</id>
+        <name>Ecluse de Bourg-les-Valence</name>
+        <type_code>LCK</type_code>
+        <coordinate>
+          <lat>44 57.7322 N</lat>
+          <long>4 52.3762 E</long>
+        </coordinate>
+        <fairway_name>Rhone 106.3 km</fairway_name>
+      </geo_object>
+      <limitation>
+        <limitation_period>
+          <date_start>2024-01-02+02:00</date_start>
+          <date_end>2024-01-02+02:00</date_end>
+          <time_start>15:30:00</time_start>
+          <time_end>15:30:00</time_end>
+        </limitation_period>
+        <limitation_code>NOLIM</limitation_code>
+        <position_code>AL</position_code>
+        <target_group>
+          <target_group_code>ALL</target_group_code>
+          <direction_code>UPS</direction_code>
+        </target_group>
+      </limitation>
+    </object>
+  </ftm>
+</RIS_Message>
