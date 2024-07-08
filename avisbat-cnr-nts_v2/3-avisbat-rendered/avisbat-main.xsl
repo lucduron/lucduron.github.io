@@ -71,17 +71,35 @@
   </xsl:template>
 
   <xsl:variable name="sousTypesBateaux">
-    <!-- Sous-types de PLE -->
+    <!-- Sous-types de COM -->
+    <!--
     <Item>Automoteurs</Item>
     <Item>Bateaux de transport de matières dangereuses</Item>
     <Item>Bateaux en convois</Item>
     <Item>Fluvio-maritimes</Item>
     <Item>Pousseurs</Item>
+    -->
     <!-- Sous-types de PAX -->
     <Item>Bateaux d'activité à quais</Item>
     <Item>Bateaux promenades</Item>
     <Item>Bateaux restauration</Item>
     <Item>Bateaux-hôtels</Item>
+    <!-- Sous-types du PLE -->
+    <Item>Bateaux nolisés</Item>
+    <Item>Bateaux-lavoirs</Item>
+    <Item>Embarcations de pêche</Item>
+    <Item>jet-skis</Item>
+    <Item>Pénichettes</Item>
+    <Item>Plaisanciers</Item>
+    <Item>Ski-nautiques</Item>
+    <!--
+    <Item>Avirons</Item>
+    <Item>Bateaux à voile</Item>
+    <Item>Bateaux historiques</Item>
+    <Item>Embarcations de pêche</Item>
+    <Item>Engins motorisés de loisirs</Item>
+    <Item>Menue embarcation</Item>
+    -->
   </xsl:variable>
 
   <xsl:template match="target_group">
