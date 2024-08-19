@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="avisbat-renderer-declaration.xsl"?>
+<!--FRA_FR_2024_00005.xml-->
+<RIS_Message>
+  <!--Déclaration des RNPC sur le Secteur 5-->
+  <identification>
+    <from>VNF2000+</from>
+    <originator>Service Fluvial Lyonnais</originator>
+    <country_code>FR</country_code>
+    <language_code>FR</language_code>
+    <date_issue>2024-01-01T12:00:00+02:00</date_issue>
+  </identification>
+  <ftm>
+    <!-- Identifiant CNR (l'API VNF remplacera par ceux de VNF) -->
+    <nts_number>
+      <organisation>CNR</organisation>
+      <year>2024</year>
+      <number>5</number>
+      <serial_number>0</serial_number>
+    </nts_number>
+    <subject_code>ANNOUN</subject_code>
+    <validity_period>
+      <date_start>2024-01-01+02:00</date_start>
+      <!--<date_end></date_end>-->
+    </validity_period>
+    <contents>Restrictions de Navigation en Période de Crue (RNPC) déclarées sur le Secteur 5.
+
+La navigation de tous les bateaux de plaisance est interdite.
+La navigation des bateaux à passagers est autorisée avec les seuls membres d'équipage.
+
+Écluses concernées par ces restrictions de navigation :
+- Caderousse (Fermée dans le sens avalant)
+- Avignon (Fermée dans les 2 sens)
+- Beaucaire (Fermée dans le sens montant)</contents>
+    <source>Service Fluvial Lyonnais</source>
+    <reason_code>HIGWAT</reason_code>
+    <!-- Les liens vers les fichiers PDF générés par VNF seront insérés ici -->
+    <!-- Tous les tronçons du secteur -->
+    <fairway_section>
+      <geo_object>
+        <id>FRXXXVN2550000002182</id>
+        <id>FRXXXVN2550000002460</id>
+        <name>Rhône</name>
+        <type_code>FWY</type_code>
+        <coordinate>
+          <lat>44 5.2487 N</lat>
+          <long>4 44.3864 E</long>
+        </coordinate>
+        <coordinate>
+          <lat>43 56.0658 N</lat>
+          <long>4 45.5076 E</long>
+        </coordinate>
+        <fairway_name>Du PK 218.2 "restitution Caderousse" au PK 246.0 "amont Durance"</fairway_name>
+      </geo_object>
+      <limitation>
+        <limitation_period>
+          <date_start>2024-01-01+02:00</date_start>
+          <time_start>12:00:00</time_start>
+        </limitation_period>
+        <limitation_code>OBSTRU</limitation_code>
+        <position_code>AL</position_code>
+        <target_group>
+          <target_group_code>PAX</target_group_code>
+          <direction_code>ALL</direction_code>
+        </target_group>
+        <target_group>
+          <target_group_code>PLE</target_group_code>
+          <direction_code>ALL</direction_code>
+        </target_group>
+      </limitation>
+      <limitation>
+        <limitation_period>
+          <date_start>2024-01-01+02:00</date_start>
+          <time_start>12:00:00</time_start>
+        </limitation_period>
+        <limitation_code>CAUTIO</limitation_code>
+        <position_code>AL</position_code>
+        <target_group>
+          <target_group_code>ALL</target_group_code>
+          <direction_code>ALL</direction_code>
+        </target_group>
+      </limitation>
+    </fairway_section>
+    <!-- Toutes les écluses du secteur -->
+    <object>
+      <geo_object>
+        <id>FRXXXVN255LOCKS02147</id>
+        <name>Ecluse de Caderousse</name>
+        <type_code>LCK</type_code>
+        <coordinate>
+          <lat>44 5.7479 N</lat>
+          <long>4 43.3309 E</long>
+        </coordinate>
+        <fairway_name>Rhone 214.7 km</fairway_name>
+      </geo_object>
+      <limitation>
+        <limitation_period>
+          <date_start>2024-01-01+02:00</date_start>
+          <time_start>12:00:00</time_start>
+        </limitation_period>
+        <limitation_code>OBSTRU</limitation_code>
+        <position_code>AL</position_code>
+        <target_group>
+          <target_group_code>PAX</target_group_code>
+          <direction_code>DWN</direction_code>
+        </target_group>
+        <target_group>
+          <target_group_code>PLE</target_group_code>
+          <direction_code>DWN</direction_code>
+        </target_group>
+      </limitation>
+    </object>
+    <object>
+      <geo_object>
+        <id>FRXXXVN255LOCKS02344</id>
+        <name>Ecluse d'Avignon</name>
+        <type_code>LCK</type_code>
+        <coordinate>
+          <lat>43 58.5885 N</lat>
+          <long>4 48.9812 E</long>
+        </coordinate>
+        <fairway_name>Rhone 234.4 km</fairway_name>
+      </geo_object>
+      <limitation>
+        <limitation_period>
+          <date_start>2024-01-01+02:00</date_start>
+          <time_start>12:00:00</time_start>
+        </limitation_period>
+        <limitation_code>OBSTRU</limitation_code>
+        <position_code>AL</position_code>
+        <target_group>
+          <target_group_code>PAX</target_group_code>
+          <direction_code>ALL</direction_code>
+        </target_group>
+        <target_group>
+          <target_group_code>PLE</target_group_code>
+          <direction_code>ALL</direction_code>
+        </target_group>
+      </limitation>
+    </object>
+    <object>
+      <geo_object>
+        <id>FRXXXVN255LOCKS02649</id>
+        <name>Ecluse de Beaucaire</name>
+        <type_code>LCK</type_code>
+        <coordinate>
+          <lat>43 49.4368 N</lat>
+          <long>4 38.5278 E</long>
+        </coordinate>
+        <fairway_name>Rhone 264.9 km</fairway_name>
+      </geo_object>
+      <limitation>
+        <limitation_period>
+          <date_start>2024-01-01+02:00</date_start>
+          <time_start>12:00:00</time_start>
+        </limitation_period>
+        <limitation_code>OBSTRU</limitation_code>
+        <position_code>AL</position_code>
+        <target_group>
+          <target_group_code>PAX</target_group_code>
+          <direction_code>UPS</direction_code>
+        </target_group>
+        <target_group>
+          <target_group_code>PLE</target_group_code>
+          <direction_code>UPS</direction_code>
+        </target_group>
+      </limitation>
+    </object>
+  </ftm>
+</RIS_Message>
