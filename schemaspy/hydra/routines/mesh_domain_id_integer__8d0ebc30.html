@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>hydra.model1</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
+        <!-- Bootstrap 3.3.5 -->
+        <link rel="stylesheet" href="../bower/admin-lte/bootstrap/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="../bower/font-awesome/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="../bower/ionicons/css/ionicons.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="../bower/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="../bower/datatables.net-buttons-bs/css/buttons.bootstrap.min.css">
+        <!-- Code Mirror -->
+        <link rel="stylesheet" href="../bower/codemirror/codemirror.css">
+        <!-- Fonts -->
+        <link href='../fonts/indieflower/indie-flower.css' rel='stylesheet' type='text/css'>
+        <link href='../fonts/source-sans-pro/source-sans-pro.css' rel='stylesheet' type='text/css'>
+
+        <!-- Theme style -->
+        <link rel="stylesheet" href="../bower/admin-lte/dist/css/AdminLTE.min.css">
+        <!-- Salvattore -->
+        <link rel="stylesheet" href="../bower/salvattore/salvattore.css">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+           folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="../bower/admin-lte/dist/css/skins/_all-skins.min.css">
+        <!-- SchemaSpy -->
+        <link rel="stylesheet" href="../schemaSpy.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="../bower/html5shiv/html5shiv.min.js"></script>
+        <script src="../bower/respond/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+    <body class="hold-transition skin-blue layout-top-nav">
+        <div class="wrapper">
+            <header class="main-header">
+                <nav class="navbar navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a href="../index.html" class="navbar-brand"><b>hydra</b></a><span class="navbar-brand" style="padding-left: 0">.model1</span>
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="../index.html">Tables <span class="sr-only">(current)</span></a></li>
+                                <li><a href="../columns.html" title="All of the columns in the schema">Columns</a></li>
+                                <li><a href="../constraints.html" title="Useful for diagnosing error messages that just give constraint name or number">Constraints</a></li>
+                                <li><a href="../relationships.html" title="Diagram of table relationships">Relationships</a></li>
+                                <li><a href="../orphans.html" title="View of tables with neither parents nor children">Orphan&nbsp;Tables</a></li>
+                                <li><a href="../anomalies.html" title="Things that might not be quite right">Anomalies</a></li>
+                                <li><a href="../routines.html" title="Procedures and functions">Routines</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                        <!-- Navbar Right Menu -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+            </header>
+            <!-- Main content -->
+            <!-- Full Width Column -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>mesh(domain_id integer)</h1><br />
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                            <h3 id="Columns" class="box-title">Parameters</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <table id="standard_table" class="table table-bordered table-striped dataTable" role="grid">
+                                <thead align='left'>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Mode</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>domain_id</td>
+                                    <td>integer</td>
+                                    <td>IN</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-file-code-o"></i>
+                            <h3 id="RoutineDefinition" class="box-title">Definition</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <textarea id="sql-script-codemirror" name="sql-script-codemirror" rows="" style="display: none;">declare&#10;    cfg integer;&#10;    lnk integer;&#10;    rec record;&#10;    domain_2d_id integer;&#10;begin&#10;    select configuration from model1.metadata into cfg;&#10;    update model1.metadata set configuration&#61;1;&#10;&#10;    select m.domain_2d&#10;    from model1.coverage c&#10;    left join model1.domain_2d_marker m on st_intersects(c.geom, m.geom)&#10;    where c.id&#61;domain_id &#10;    into domain_2d_id;&#10;&#10;    with meshable as (&#10;        select&#10;            p.geom as polygon,&#10;            st_multi(st_difference(ct.geom, rg.geom)) as constraints,&#10;            rg.geom as border&#10;        from model1.coverage p&#10;        cross join lateral (&#10;            select st_union(geom) as geom from (&#10;                select st_intersection(discretized, p.geom) as geom&#10;                from model1.constrain c&#10;                where st_intersects(p.geom, c.discretized)&#10;                and (c.constrain_type is null or c.constrain_type !&#61; &#39;ignored_for_coverages&#39;)&#10;                ) t&#10;            ) ct&#10;        cross join lateral (&#10;            select st_collect(st_exteriorring(r.geom)) as geom from st_dumprings(p.geom) r&#10;            ) as rg&#10;        where domain_type&#61;&#39;2d&#39;&#10;        and p.id &#61; domain_id&#10;        and not exists (select 1 from model1.elem_2d_node n where st_intersects(p.geom, n.geom))&#10;    ),&#10;    tess as (&#10;        select vertex, face from meshable cross join lateral project.tesselate(polygon, constrains&#61;&gt;constraints, has_quads&#61;&gt;true)&#10;    ),&#10;    gen as (&#10;        insert into model1.generation_step default values returning id&#10;    ),&#10;    msh as (&#10;        insert into model1.elem_2d_node(contour, generated, domain_2d)&#10;        select st_makepolygon(st_makeline(st_force3d(st_geometryn(tess.vertex, i), project.altitude(st_geometryn(tess.vertex, i))))), gen.id, domain_2d_id&#10;        from tess&#10;        cross join gen&#10;        cross join lateral generate_series(1, array_length(tess.face, 1)) f&#10;        cross join lateral unnest(tess.face[f:f][:]) i&#10;        where i is not null&#10;        group by f, gen.id&#10;        returning id, contour, geom, zb&#10;    ),&#10;    msh_lnk as (&#10;        select model1.create_elem2d_links(n1.id, (st_dump(st_collectionextract(st_intersection(n1.contour, n2.contour), 2))).geom, gen.id)&#10;        from msh as n1&#10;        , msh as n2&#10;        , gen&#10;        where st_intersects(n1.contour, n2.contour)&#10;        and st_length(st_collectionextract(st_intersection(n1.contour, n2.contour), 2)) &gt; 0&#10;        and n1.id &gt; n2.id&#10;    ),&#10;    brd_lnk as (&#10;        select model1.create_elem2d_links(e.id, (st_dump(st_collectionextract(st_intersection(e.contour, b.border), 2))).geom, gen.id)&#10;                from msh as e&#10;                , meshable as b&#10;                , gen&#10;                where st_intersects(e.contour, b.border)&#10;                and st_length(st_collectionextract(st_intersection(e.contour, b.border), 2)) &gt; 0&#10;    ),&#10;    exterior as (&#10;        select e.id as id, ST_Difference(e.contour, ST_buffer(e.contour, -sqrt(ST_Area(e.contour))/4.)) as geom&#10;        from msh as e&#10;    ),&#10;    reach_segments as (&#10;        select distinct on (elem_id, reach_id) e.id as elem_id, c.reach as reach_id, (st_dump(st_intersection(e.contour, c.geom))).geom as geom, (st_dump(st_intersection(ext.geom, c.geom))).geom as limited_geom&#10;        from model1.channel_reach as c&#10;        , msh as e&#10;        join exterior as ext on e.id&#61;ext.id&#10;        where st_intersects(e.contour, c.geom)&#10;    ),&#10;    generated_node as (&#10;        select elem_id, reach_id, ST_LineInterpolatePoint(limited_geom, .5) as geom&#10;        from reach_segments as s&#10;    ),&#10;    new_node as (&#10;        select n.elem_id, n.reach_id, project.set_altitude(st_force3d(n.geom)) as geom, e.geom as elem_geom&#10;        from generated_node as n&#10;        join msh as e on n.elem_id&#61;e.id&#10;        where not exists (select 1 from model1.river_node as r where r.reach&#61;n.reach_id and ST_Contains(e.contour, r.geom))&#10;    ),&#10;    ins_node as (&#10;        insert into model1.river_node(geom, generated, reach)&#10;        select geom, gen.id, reach_id&#10;        from new_node&#10;        , gen&#10;        returning id, geom, reach&#10;    ),&#10;    links_geom as (&#10;        select distinct on (id, reach) n.geom as g1, e.geom as g2, e.id, n.reach&#10;            from model1.river_node as n&#10;            , msh as e&#10;            where st_contains(e.contour, n.geom)&#10;        union&#10;        select i.geom as g1, e.geom as g2, e.id, i.reach&#10;            from ins_node as i&#10;            , msh as e&#10;            where st_contains(e.contour, i.geom)&#10;        order by id&#10;    ),&#10;    immersed_channel as (&#10;        insert into model1.overflow_link(geom, generated, z_crest1, width1, z_crest2, width2)&#10;        select st_makeline(ARRAY[l.g1, st_centroid(st_union(l.g1, l.g2))]),gen.id, e.zb, 0, e.zb, st_length(s.geom)*2&#10;        from links_geom as l&#10;        , msh as e&#10;        , gen&#10;        , reach_segments as s&#10;        where l.id&#61;e.id and l.id &#61; s.elem_id&#10;        and s.reach_id &#61; l.reach&#10;        returning id&#10;    )&#10;    select count(1) from (select 1 from brd_lnk union all select 1 from msh_lnk union select 1 from immersed_channel) t into lnk&#10;    ;&#10;&#10;    update model1.metadata set configuration&#61;cfg;&#10;&#10;    update model1.gate_link l set geom&#61;l.geom&#10;    from model1.coverage c&#10;    where l.generated is null and st_intersects(c.geom, l.geom) and c.id &#61; domain_id;&#10;&#10;    update model1.overflow_link l set geom&#61;l.geom&#10;    from model1.coverage c&#10;    where l.generated is null and st_intersects(c.geom, l.geom) and c.id &#61; domain_id;&#10;&#10;    -- fake update to re-attach links&#10;    for rec in select unnest(enum_range(null::hydra_link_type)) as type_ loop&#10;        execute &#39;update model1.&#39;||rec.type_||&#39;_link l set geom&#61;l.geom &#39;||&#10;        &#39;from model1.coverage c &#39;||&#10;        &#39;where l.generated is null and st_intersects(c.geom, l.geom) and c.id &#61; &#39;||domain_id;&#10;    end loop;&#10;&#10;    return 0;&#10;end;</textarea>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div>
+                    <div class="pull-right hidden-xs">
+                        <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
+                        <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
+                    </div>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.2.4</a></strong>
+                </div>
+                <!-- /.container -->
+            </footer>
+        </div>
+        <!-- ./wrapper -->
+
+        <!-- jQuery 2.2.3 -->
+        <script src="../bower/admin-lte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="../bower/admin-lte/plugins/jQueryUI/jquery-ui.min.js"></script>
+        <!-- Bootstrap 3.3.5 -->
+        <script src="../bower/admin-lte/bootstrap/js/bootstrap.min.js"></script>
+        <!-- DataTables -->
+        <script src="../bower/datatables.net/jquery.dataTables.min.js"></script>
+        <script src="../bower/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="../bower/datatables.net-buttons/dataTables.buttons.min.js"></script>
+        <script src="../bower/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.html5.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.print.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.colVis.min.js"></script>
+        <!-- SheetJS -->
+        <script src="../bower/js-xlsx/xlsx.full.min.js"></script>
+        <!-- pdfmake -->
+        <script src="../bower/pdfmake/pdfmake.min.js"></script>
+        <script src="../bower/pdfmake/vfs_fonts.js"></script>
+        <!-- SlimScroll -->
+        <script src="../bower/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="../bower/admin-lte/plugins/fastclick/fastclick.js"></script>
+        <!-- Salvattore -->
+        <script src="../bower/salvattore/salvattore.min.js"></script>
+        <!-- AnchorJS -->
+        <script src="../bower/anchor-js/anchor.min.js"></script>
+        <!-- CodeMirror -->
+        <script src="../bower/codemirror/codemirror.js"></script>
+        <script src="../bower/codemirror/sql.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../bower/admin-lte/dist/js/app.min.js"></script>
+        <script src="routine.js"></script>
+        <script src="../schemaSpy.js"></script>
+    </body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>hydra.model1</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
+        <!-- Bootstrap 3.3.5 -->
+        <link rel="stylesheet" href="../bower/admin-lte/bootstrap/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="../bower/font-awesome/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="../bower/ionicons/css/ionicons.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="../bower/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="../bower/datatables.net-buttons-bs/css/buttons.bootstrap.min.css">
+        <!-- Code Mirror -->
+        <link rel="stylesheet" href="../bower/codemirror/codemirror.css">
+        <!-- Fonts -->
+        <link href='../fonts/indieflower/indie-flower.css' rel='stylesheet' type='text/css'>
+        <link href='../fonts/source-sans-pro/source-sans-pro.css' rel='stylesheet' type='text/css'>
+
+        <!-- Theme style -->
+        <link rel="stylesheet" href="../bower/admin-lte/dist/css/AdminLTE.min.css">
+        <!-- Salvattore -->
+        <link rel="stylesheet" href="../bower/salvattore/salvattore.css">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+           folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="../bower/admin-lte/dist/css/skins/_all-skins.min.css">
+        <!-- SchemaSpy -->
+        <link rel="stylesheet" href="../schemaSpy.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="../bower/html5shiv/html5shiv.min.js"></script>
+        <script src="../bower/respond/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+    <body class="hold-transition skin-blue layout-top-nav">
+        <div class="wrapper">
+            <header class="main-header">
+                <nav class="navbar navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a href="../index.html" class="navbar-brand"><b>hydra</b></a><span class="navbar-brand" style="padding-left: 0">.model1</span>
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="../index.html">Tables <span class="sr-only">(current)</span></a></li>
+                                <li><a href="../columns.html" title="All of the columns in the schema">Columns</a></li>
+                                <li><a href="../constraints.html" title="Useful for diagnosing error messages that just give constraint name or number">Constraints</a></li>
+                                <li><a href="../relationships.html" title="Diagram of table relationships">Relationships</a></li>
+                                <li><a href="../orphans.html" title="View of tables with neither parents nor children">Orphan&nbsp;Tables</a></li>
+                                <li><a href="../anomalies.html" title="Things that might not be quite right">Anomalies</a></li>
+                                <li><a href="../routines.html" title="Procedures and functions">Routines</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                        <!-- Navbar Right Menu -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+            </header>
+            <!-- Main content -->
+            <!-- Full Width Column -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>river_node_fct()</h1><br />
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                            <h3 id="Columns" class="box-title">Parameters</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <table id="standard_table" class="table table-bordered table-striped dataTable" role="grid">
+                                <thead align='left'>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Mode</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>IN</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-file-code-o"></i>
+                            <h3 id="RoutineDefinition" class="box-title">Definition</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <textarea id="sql-script-codemirror" name="sql-script-codemirror" rows="" style="display: none;">declare&#10;        config_name varchar;&#10;        new_config varchar;&#10;        switching boolean;&#10;    begin&#10;        if tg_op &#61; &#39;INSERT&#39; then&#10;            insert into model1._node(node_type, name, geom, configuration, generated, comment)&#10;                values (&#39;river&#39;, coalesce(new.name, &#39;define_later&#39;), (ST_SetSRID(ST_MakePoint(ST_X(new.geom), ST_Y(new.geom), coalesce(model1.river_node_z_invert(new.geom), project.altitude(new.geom))), 2154)), new.configuration::json, new.generated, new.comment)&#10;                returning&#10;                id, geom into new.id, new.geom;&#10;            update model1._node set name &#61; (select abbreviation||new.id::varchar&#10;                from hydra.node_type where name &#61; &#39;river&#39;) where name &#61; &#39;define_later&#39; and id &#61; new.id;&#10;            insert into model1._river_node(id, node_type, reach, z_ground, area)&#10;                values (new.id, &#39;river&#39;, coalesce(new.reach, (select id from model1.reach where ST_DWithin(new.geom, geom, .1) order by ST_Distance(new.geom, geom) asc limit 1)), coalesce(new.z_ground, (project.altitude(new.geom))), coalesce(new.area, 1))&#10;                returning reach, z_ground, area into new.reach, new.z_ground, new.area;&#10;            perform model1.add_configuration_fct(new.configuration::json, new.id, &#39;river_node&#39;);&#10;&#10;            -- Lines to update specific nodes that works with associated contours&#10;            if &#39;river&#39; &#61; &#39;storage&#39; then&#10;                update model1._storage_node set contour&#61;(select id from model1.coverage as c where ST_intersects(new.geom, c.geom)) where id&#61;new.id;&#10;                if (select trigger_coverage from model1.metadata) then&#10;                    update model1.coverage as c set domain_type&#61;&#39;storage&#39; where st_intersects(new.geom, c.geom);&#10;                end if;&#10;            end if;&#10;&#10;            update model1._node set validity &#61; (select (z_ground is not null) and (area is not null) and (area&gt;0) and (reach is not null) and ((select not exists(select 1 from model1.station where st_intersects(geom, new.geom)))) from  model1._river_node where id &#61; new.id) where id &#61; new.id;&#10;            return new;&#10;        elsif tg_op &#61; &#39;UPDATE&#39; then&#10;            -- Handle configurations&#10;            if ((new.z_ground, new.area) is distinct from (old.z_ground, old.area)) then&#10;                select is_switching from model1.config_switch into switching;&#10;                if switching&#61;false then&#10;                    select name from model1.configuration as c, model1.metadata as m where c.id &#61; m.configuration into config_name;&#10;                    if old.configuration is null and config_name!&#61;&#39;default&#39; then&#10;                        select &#39;{&quot;default&quot;:&#39; || row_to_json(o) ||&#39;, &quot;&#39; || config_name || &#39;&quot;:&#39; || row_to_json(n) ||&#39;}&#39; from (select old.z_ground, old.area) as o, (select new.z_ground, new.area) as n into new_config;&#10;                        update model1._node set configuration&#61;new_config::json where id&#61;old.id;&#10;                    elsif old.configuration is not null then&#10;                        select &#39;{ &quot;&#39; || config_name || &#39;&quot;:&#39; || row_to_json(n) ||&#39;}&#39; from (select new.z_ground, new.area) n into new_config;&#10;                        update model1._node set configuration&#61;(configuration::jsonb|| new_config::jsonb)::json where id&#61;old.id;&#10;                    end if;&#10;                end if;&#10;            end if;&#10;&#10;            update model1._node set name&#61;new.name, geom&#61;(ST_SetSRID(ST_MakePoint(ST_X(new.geom), ST_Y(new.geom), coalesce(model1.river_node_z_invert(new.geom), project.altitude(new.geom))), 2154)), generated&#61;new.generated, comment&#61;new.comment where id&#61;old.id returning geom into new.geom;&#10;            update model1._river_node set reach&#61;new.reach, z_ground&#61;new.z_ground, area&#61;new.area where id&#61;old.id;&#10;            perform model1.add_configuration_fct(new.configuration::json, old.id, &#39;river_node&#39;);&#10;&#10;            -- Lines to update specific nodes that works with associated contours&#10;            if &#39;river&#39; &#61; &#39;catchment&#39; then&#10;                update model1._catchment_node set contour&#61;(select id from model1.catchment as c where ST_intersects(new.geom, c.geom)) where id&#61;old.id;&#10;            end if;&#10;            if &#39;river&#39; &#61; &#39;river&#39; and not ST_equals(new.geom, old.geom) then&#10;                update model1._river_node set reach&#61;(select id from model1.reach as r where ST_DWithin(new.geom, r.geom, 0.1) order by ST_Distance(new.geom, r.geom) asc limit 1) where id&#61;old.id;&#10;            end if;&#10;            if &#39;river&#39; &#61; &#39;storage&#39; then&#10;                update model1._storage_node set contour&#61;(select id from model1.coverage as c where ST_intersects(new.geom, c.geom)) where id&#61;old.id;&#10;                if (select trigger_coverage from model1.metadata) then&#10;                    update model1.coverage as c set domain_type&#61;&#39;2d&#39; where st_intersects(old.geom, c.geom);&#10;                    update model1.coverage as c set domain_type&#61;&#39;storage&#39; where st_intersects(new.geom, c.geom);&#10;                end if;&#10;            end if;&#10;&#10;            update model1._node set validity &#61; (select (z_ground is not null) and (area is not null) and (area&gt;0) and (reach is not null) and ((select not exists(select 1 from model1.station where st_intersects(geom, new.geom)))) from  model1._river_node where id &#61; old.id) where id &#61; old.id;&#10;            return new;&#10;        elsif tg_op &#61; &#39;DELETE&#39; then&#10;&#10;            -- Lines to update specific nodes that works with associated contours&#10;            if &#39;river&#39; &#61; &#39;storage&#39; and (select trigger_coverage from model1.metadata) then&#10;                update model1.coverage as c set domain_type&#61;&#39;2d&#39; where st_intersects(old.geom, c.geom);&#10;            end if;&#10;&#10;            delete from project.interlink where (model_up&#61;&#39;model1&#39; and node_up&#61;old.id) or (model_down&#61;&#39;model1&#39; and node_down&#61;old.id);&#10;&#10;            delete from model1._river_node where id&#61;old.id;&#10;            delete from model1._node where id&#61;old.id;&#10;            return old;&#10;        end if;&#10;&#10;    end;</textarea>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div>
+                    <div class="pull-right hidden-xs">
+                        <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
+                        <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
+                    </div>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.2.4</a></strong>
+                </div>
+                <!-- /.container -->
+            </footer>
+        </div>
+        <!-- ./wrapper -->
+
+        <!-- jQuery 2.2.3 -->
+        <script src="../bower/admin-lte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="../bower/admin-lte/plugins/jQueryUI/jquery-ui.min.js"></script>
+        <!-- Bootstrap 3.3.5 -->
+        <script src="../bower/admin-lte/bootstrap/js/bootstrap.min.js"></script>
+        <!-- DataTables -->
+        <script src="../bower/datatables.net/jquery.dataTables.min.js"></script>
+        <script src="../bower/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="../bower/datatables.net-buttons/dataTables.buttons.min.js"></script>
+        <script src="../bower/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.html5.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.print.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.colVis.min.js"></script>
+        <!-- SheetJS -->
+        <script src="../bower/js-xlsx/xlsx.full.min.js"></script>
+        <!-- pdfmake -->
+        <script src="../bower/pdfmake/pdfmake.min.js"></script>
+        <script src="../bower/pdfmake/vfs_fonts.js"></script>
+        <!-- SlimScroll -->
+        <script src="../bower/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="../bower/admin-lte/plugins/fastclick/fastclick.js"></script>
+        <!-- Salvattore -->
+        <script src="../bower/salvattore/salvattore.min.js"></script>
+        <!-- AnchorJS -->
+        <script src="../bower/anchor-js/anchor.min.js"></script>
+        <!-- CodeMirror -->
+        <script src="../bower/codemirror/codemirror.js"></script>
+        <script src="../bower/codemirror/sql.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../bower/admin-lte/dist/js/app.min.js"></script>
+        <script src="routine.js"></script>
+        <script src="../schemaSpy.js"></script>
+    </body>
+</html>

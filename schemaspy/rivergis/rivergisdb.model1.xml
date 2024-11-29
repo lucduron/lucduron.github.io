@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?><database name="rivergisdb" schema="model1" type="PostgreSQL - 17.2">
+   <sequences>
+      <sequence increment="1" name="BankLines_BankID_seq" startValue="1"/>
+      <sequence increment="1" name="BlockedObs_BlockID_seq" startValue="1"/>
+      <sequence increment="1" name="BreakLines2d_BLID_seq" startValue="1"/>
+      <sequence increment="1" name="BreakPoints2d_BPID_seq" startValue="1"/>
+      <sequence increment="1" name="Bridges_BridgeID_seq" startValue="1"/>
+      <sequence increment="1" name="FlowAreas2d_AreaID_seq" startValue="1"/>
+      <sequence increment="1" name="Flowpaths_FpID_seq" startValue="1"/>
+      <sequence increment="1" name="IneffAreas_IneffID_seq" startValue="1"/>
+      <sequence increment="1" name="InlineStructures_InlineSID_seq" startValue="1"/>
+      <sequence increment="1" name="LanduseAreas_LUID_seq" startValue="1"/>
+      <sequence increment="1" name="LateralStructures_LateralSID_seq" startValue="1"/>
+      <sequence increment="1" name="LeveeAlignment_LeveeID_seq" startValue="1"/>
+      <sequence increment="1" name="LeveePoints_LeveePID_seq" startValue="1"/>
+      <sequence increment="1" name="MeshPoints2d_MPID_seq" startValue="1"/>
+      <sequence increment="1" name="SAConnections_SAConnID_seq" startValue="1"/>
+      <sequence increment="1" name="StorageAreas_StorageID_seq" startValue="1"/>
+      <sequence increment="1" name="StreamCenterlines_ReachID_seq" startValue="1"/>
+      <sequence increment="1" name="XSCutLines_XsecID_seq" startValue="1"/>
+   </sequences>
+   <tables>
+      <table name="BankLines" numRows="0" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.&quot;BankLines_BankID_seq&quot;'::regclass)" digits="0" id="1" name="BankID" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <primaryKey column="BankID" sequenceNumberInPK="1"/>
+         <index name="BankLines_pkey" unique="true">
+            <column ascending="true" name="BankID"/>
+         </index>
+         <index name="model1_BankLines_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="BlockedObs" numRows="0" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.&quot;BlockedObs_BlockID_seq&quot;'::regclass)" digits="0" id="1" name="BlockID" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="2" name="Elevation" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <primaryKey column="BlockID" sequenceNumberInPK="1"/>
+         <index name="BlockedObs_pkey" unique="true">
+            <column ascending="true" name="BlockID"/>
+         </index>
+         <index name="model1_BlockedObs_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="BreakLines2d" numRows="0" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.&quot;BreakLines2d_BLID_seq&quot;'::regclass)" digits="0" id="1" name="BLID" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="BLID" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="MeshPoints2d"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="AreaID" nullable="true" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="AreaID" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="FlowAreas2d"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="3" name="CellSizeAlong" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="CellSizeAcross" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="RowsAligned" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <primaryKey column="BLID" sequenceNumberInPK="1"/>
+         <index name="BreakLines2d_pkey" unique="true">
+            <column ascending="true" name="BLID"/>
+         </index>
+         <index name="model1_BreakLines2d_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="BreakPoints2d" numRows="0" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.&quot;BreakPoints2d_BPID_seq&quot;'::regclass)" digits="0" id="1" name="BPID" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="AreaID" nullable="true" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="AreaID" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="FlowAreas2d"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="BLmID" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="Fraction" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <primaryKey column="BPID" sequenceNumberInPK="1"/>
+         <index name="BreakPoints2d_pkey" unique="true">
+            <column ascending="true" name="BPID"/>
+         </index>
+         <index name="model1_BreakPoints2d_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="Bridges" numRows="0" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.&quot;Bridges_BridgeID_seq&quot;'::regclass)" digits="0" id="1" name="BridgeID" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="RiverCode" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="ReachCode" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="Station" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="5" name="USDistance" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="6" name="TopWidth" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="NodeName" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="DtmID" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <primaryKey column="BridgeID" sequenceNumberInPK="1"/>
+         <index name="Bridges_pkey" unique="true">
+            <column ascending="true" name="BridgeID"/>
+         </index>
+         <index name="model1_Bridges_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="FlowAreas2d" numRows="0" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.&quot;FlowAreas2d_AreaID_seq&quot;'::regclass)" digits="0" id="1" name="AreaID" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="AreaID" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="BreakLines2d"/>
+            <child column="AreaID" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="BreakPoints2d"/>
+            <child column="AreaID" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="MeshPoints2d"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="Name" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="3" name="CellSize" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <primaryKey column="AreaID" sequenceNumberInPK="1"/>
+         <index name="FlowAreas2d_pkey" unique="true">
+            <column ascending="true" name="AreaID"/>
+         </index>
+         <index name="model1_FlowAreas2d_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="Flowpaths" numRows="0" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.&quot;Flowpaths_FpID_seq&quot;'::regclass)" digits="0" id="1" name="FpID" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="LineType" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="FpID" sequenceNumberInPK="1"/>
+         <index name="Flowpaths_pkey" unique="true">
+            <column ascending="true" name="FpID"/>
+         </index>
+         <index name="model1_Flowpaths_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="IneffAreas" numRows="0" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.&quot;IneffAreas_IneffID_seq&quot;'::regclass)" digits="0" id="1" name="IneffID" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="2" name="Elevation" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <primaryKey column="IneffID" sequenceNumberInPK="1"/>
+         <index name="IneffAreas_pkey" unique="true">
+            <column ascending="true" name="IneffID"/>
+         </index>
+         <index name="model1_IneffAreas_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="InlineStructures" numRows="0" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.&quot;InlineStructures_InlineSID_seq&quot;'::regclass)" digits="0" id="1" name="InlineSID" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="RiverCode" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="ReachCode" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="Station" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="5" name="USDistance" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="6" name="TopWidth" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="NodeName" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="DtmID" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <primaryKey column="InlineSID" sequenceNumberInPK="1"/>
+         <index name="InlineStructures_pkey" unique="true">
+            <column ascending="true" name="InlineSID"/>
+         </index>
+         <index name="model1_InlineStructures_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="LanduseAreas" numRows="0" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.&quot;LanduseAreas_LUID_seq&quot;'::regclass)" digits="0" id="1" name="LUID" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="LUCode" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="3" name="N_Value" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <primaryKey column="LUID" sequenceNumberInPK="1"/>
+         <index name="LanduseAreas_pkey" unique="true">
+            <column ascending="true" name="LUID"/>
+         </index>
+         <index name="model1_LanduseAreas_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="LateralStructures" numRows="0" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.&quot;LateralStructures_LateralSID_seq&quot;'::regclass)" digits="0" id="1" name="LateralSID" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="RiverCode" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="ReachCode" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="Station" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="5" name="USDistance" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="6" name="TopWidth" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="NodeName" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="DtmID" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <primaryKey column="LateralSID" sequenceNumberInPK="1"/>
+         <index name="LateralStructures_pkey" unique="true">
+            <column ascending="true" name="LateralSID"/>
+         </index>
+         <index name="model1_LateralStructures_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="LeveeAlignment" numRows="0" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.&quot;LeveeAlignment_LeveeID_seq&quot;'::regclass)" digits="0" id="1" name="LeveeID" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="LeveeID" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="LeveePoints"/>
+         </column>
+         <primaryKey column="LeveeID" sequenceNumberInPK="1"/>
+         <index name="LeveeAlignment_pkey" unique="true">
+            <column ascending="true" name="LeveeID"/>
+         </index>
+         <index name="model1_LeveeAlignment_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="LeveePoints" numRows="0" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.&quot;LeveePoints_LeveePID_seq&quot;'::regclass)" digits="0" id="1" name="LeveePID" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="LeveeID" nullable="true" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="LeveeID" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="LeveeAlignment"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="XsecID" nullable="true" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="XsecID" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="XSCutLines"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="Fraction" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="5" name="Elevation" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <primaryKey column="LeveePID" sequenceNumberInPK="1"/>
+         <index name="LeveePoints_pkey" unique="true">
+            <column ascending="true" name="LeveePID"/>
+         </index>
+      </table>
+      <table name="MeshPoints2d" numRows="0" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.&quot;MeshPoints2d_MPID_seq&quot;'::regclass)" digits="0" id="1" name="MPID" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="AreaID" nullable="true" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="AreaID" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="FlowAreas2d"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="BLID" nullable="true" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="BLID" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="BreakLines2d"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="CellSize" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <primaryKey column="MPID" sequenceNumberInPK="1"/>
+         <index name="MeshPoints2d_pkey" unique="true">
+            <column ascending="true" name="MPID"/>
+         </index>
+         <index name="model1_MeshPoints2d_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="SAConnections" numRows="0" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.&quot;SAConnections_SAConnID_seq&quot;'::regclass)" digits="0" id="1" name="SAConnID" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="USSA" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="DSSA" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="TopWidth" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="NodeName" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="DtmID" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <primaryKey column="SAConnID" sequenceNumberInPK="1"/>
+         <index name="SAConnections_pkey" unique="true">
+            <column ascending="true" name="SAConnID"/>
+         </index>
+         <index name="model1_SAConnections_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="StorageAreas" numRows="0" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.&quot;StorageAreas_StorageID_seq&quot;'::regclass)" digits="0" id="1" name="StorageID" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="Name" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="3" name="MaxElev" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="MinElev" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="5" name="UserElev" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="DtmID" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <primaryKey column="StorageID" sequenceNumberInPK="1"/>
+         <index name="StorageAreas_pkey" unique="true">
+            <column ascending="true" name="StorageID"/>
+         </index>
+         <index name="model1_StorageAreas_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="StreamCenterlines" numRows="0" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.&quot;StreamCenterlines_ReachID_seq&quot;'::regclass)" digits="0" id="1" name="ReachID" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="ReachID" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="XSCutLines"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="RiverCode" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="ReachCode" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="FromNode" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="ToNode" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="6" name="ReachLen" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="7" name="FromSta" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="8" name="ToSta" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="Notes" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="ReachID" sequenceNumberInPK="1"/>
+         <index name="StreamCenterlines_pkey" unique="true">
+            <column ascending="true" name="ReachID"/>
+         </index>
+         <index name="model1_StreamCenterlines_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="XSCutLines" numRows="0" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.&quot;XSCutLines_XsecID_seq&quot;'::regclass)" digits="0" id="1" name="XsecID" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="XsecID" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="LeveePoints"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="ReachID" nullable="true" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="ReachID" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="StreamCenterlines"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="3" name="Station" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="RiverCode" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="ReachCode" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="6" name="LeftBank" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="7" name="RightBank" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="8" name="LLength" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="9" name="ChLength" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="10" name="RLength" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="NodeName" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="DtmID" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <primaryKey column="XsecID" sequenceNumberInPK="1"/>
+         <index name="XSCutLines_pkey" unique="true">
+            <column ascending="true" name="XsecID"/>
+         </index>
+         <index name="model1_XSCutLines_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+   </tables>
+   <routines>
+      <routine dataAccess="MODIFIES" deterministic="false" name="create_spatial_index(schema text, t_name text)" returnType="void" securityType="INVOKER" type="FUNCTION">
+         <comment/>
+         <definition language="plpgsql"><![CDATA[DECLARE
+    full_index_name text;
+BEGIN
+    full_index_name = schema || '_' || t_name || '_' || 'geom_idx';
+    IF NOT EXISTS (
+        SELECT 1
+        FROM pg_class c
+        JOIN pg_namespace n ON n.oid = c.relnamespace
+        WHERE c.relname = full_index_name AND n.nspname = schema
+        )
+    THEN
+        EXECUTE 'CREATE INDEX "' || full_index_name || '" ON "' || schema || '"."' || t_name || '" USING GIST (geom)';
+    END IF;
+END;]]></definition>
+         <parameters>
+            <parameter mode="IN" name="schema" type="text"/>
+            <parameter mode="IN" name="t_name" type="text"/>
+         </parameters>
+      </routine>
+   </routines>
+</database>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>hydra.model1</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
+        <!-- Bootstrap 3.3.5 -->
+        <link rel="stylesheet" href="../bower/admin-lte/bootstrap/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="../bower/font-awesome/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="../bower/ionicons/css/ionicons.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="../bower/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="../bower/datatables.net-buttons-bs/css/buttons.bootstrap.min.css">
+        <!-- Code Mirror -->
+        <link rel="stylesheet" href="../bower/codemirror/codemirror.css">
+        <!-- Fonts -->
+        <link href='../fonts/indieflower/indie-flower.css' rel='stylesheet' type='text/css'>
+        <link href='../fonts/source-sans-pro/source-sans-pro.css' rel='stylesheet' type='text/css'>
+
+        <!-- Theme style -->
+        <link rel="stylesheet" href="../bower/admin-lte/dist/css/AdminLTE.min.css">
+        <!-- Salvattore -->
+        <link rel="stylesheet" href="../bower/salvattore/salvattore.css">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+           folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="../bower/admin-lte/dist/css/skins/_all-skins.min.css">
+        <!-- SchemaSpy -->
+        <link rel="stylesheet" href="../schemaSpy.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="../bower/html5shiv/html5shiv.min.js"></script>
+        <script src="../bower/respond/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+    <body class="hold-transition skin-blue layout-top-nav">
+        <div class="wrapper">
+            <header class="main-header">
+                <nav class="navbar navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a href="../index.html" class="navbar-brand"><b>hydra</b></a><span class="navbar-brand" style="padding-left: 0">.model1</span>
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="../index.html">Tables <span class="sr-only">(current)</span></a></li>
+                                <li><a href="../columns.html" title="All of the columns in the schema">Columns</a></li>
+                                <li><a href="../constraints.html" title="Useful for diagnosing error messages that just give constraint name or number">Constraints</a></li>
+                                <li><a href="../relationships.html" title="Diagram of table relationships">Relationships</a></li>
+                                <li><a href="../orphans.html" title="View of tables with neither parents nor children">Orphan&nbsp;Tables</a></li>
+                                <li><a href="../anomalies.html" title="Things that might not be quite right">Anomalies</a></li>
+                                <li><a href="../routines.html" title="Procedures and functions">Routines</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                        <!-- Navbar Right Menu -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+            </header>
+            <!-- Main content -->
+            <!-- Full Width Column -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>zq_split_hydrology_singularity_fct()</h1><br />
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                            <h3 id="Columns" class="box-title">Parameters</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <table id="standard_table" class="table table-bordered table-striped dataTable" role="grid">
+                                <thead align='left'>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Mode</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>IN</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-file-code-o"></i>
+                            <h3 id="RoutineDefinition" class="box-title">Definition</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <textarea id="sql-script-codemirror" name="sql-script-codemirror" rows="" style="display: none;">declare&#10;        id_ integer;&#10;        nid_ integer;&#10;        node_type_ hydra_node_type;&#10;        point_ geometry(&#39;POINTZ&#39;,2154);&#10;        config_name varchar;&#10;        new_config varchar;&#10;        switching boolean;&#10;    begin&#10;        if tg_op &#61; &#39;INSERT&#39; then&#10;            /* find the node if not specified */&#10;            select id, node_type, geom from model1._node where ST_DWithin(new.geom, geom, .1) order by ST_Distance(new.geom, geom) limit 1 into nid_, node_type_, point_;&#10;            if nid_ is null then&#10;                raise exception &#39;singularity % not on node % (distance %)&#39;, ST_AsText(new.geom), (select name from model1._node ORDER BY geom &lt;-&gt; new.geom limit 1), (select ST_Distance(new.geom, geom) from model1._node ORDER BY geom &lt;-&gt; new.geom limit 1);&#10;            end if;&#10;            insert into model1._singularity(node, node_type, singularity_type, name, configuration, comment)&#10;                values (nid_, node_type_, &#39;zq_split_hydrology&#39;, coalesce(new.name, &#39;define_later&#39;), new.configuration::json, new.comment) returning id into id_;&#10;            update model1._singularity set name &#61; (select abbreviation||id_::varchar&#10;                from hydra.singularity_type where name &#61; &#39;zq_split_hydrology&#39;) where name &#61; &#39;define_later&#39; and id &#61; id_;&#10;&#10;            insert into model1._zq_split_hydrology_singularity(id, singularity_type, downstream, downstream_type, split1, split1_type, split2, split2_type, downstream_law, downstream_param, split1_law, split1_param, split2_law, split2_param)&#10;                values (id_, &#39;zq_split_hydrology&#39;, new.downstream, coalesce(new.downstream_type, (select link_type from model1._link where id&#61;new.downstream)), new.split1, coalesce(new.split1_type, (select link_type from model1._link where id&#61;new.split1)), new.split2, coalesce(new.split2_type, (select link_type from model1._link where id&#61;new.split2)), coalesce(new.downstream_law, &#39;weir&#39;), new.downstream_param::json, new.split1_law, new.split1_param::json, new.split2_law, new.split2_param::json);&#10;            if &#39;zq_split_hydrology&#39; &#61; &#39;pipe_branch_marker&#39; and (select trigger_branch from model1.metadata) then&#10;                perform model1.branch_update_fct();&#10;            end if;&#10;            if &#39;zq_split_hydrology&#39; &#61; &#39;hydrograph_bc&#39; then&#10;                update model1.routing_hydrology_link set hydrograph&#61;id_ where down&#61;nid_;&#10;                update model1.connector_hydrology_link set hydrograph&#61;id_ where down&#61;nid_;&#10;            end if;&#10;            perform model1.add_configuration_fct(new.configuration::json, id_, &#39;zq_split_hydrology_singularity&#39;);&#10;            update model1._singularity set validity &#61; (select (downstream is not null) and (split1 is not null) and (downstream_param is not null) and (split1_law is not null) and (split1_param is not null) and (split2 is null or split2_law is not null) and (split2 is null or split2_param is not null) from  model1._zq_split_hydrology_singularity where id &#61; id_) where id &#61; id_;&#10;            new.id &#61; id_;&#10;            return new;&#10;        elsif tg_op &#61; &#39;UPDATE&#39; then&#10;            -- Handle configurations&#10;            if ((new.downstream, new.downstream_type, new.split1, new.split1_type, new.split2, new.split2_type, new.downstream_law, new.downstream_param, new.split1_law, new.split1_param, new.split2_law, new.split2_param) is distinct from (old.downstream, old.downstream_type, old.split1, old.split1_type, old.split2, old.split2_type, old.downstream_law, old.downstream_param, old.split1_law, old.split1_param, old.split2_law, old.split2_param)) then&#10;                select is_switching from model1.config_switch into switching;&#10;                if switching&#61;false then&#10;                    select name from model1.configuration as c, model1.metadata as m where c.id &#61; m.configuration into config_name;&#10;                    if old.configuration is null and config_name!&#61;&#39;default&#39; then&#10;                        select &#39;{&quot;default&quot;:&#39; || row_to_json(o) ||&#39;, &quot;&#39; || config_name || &#39;&quot;:&#39; || row_to_json(n) ||&#39;}&#39; from (select old.downstream, old.downstream_type, old.split1, old.split1_type, old.split2, old.split2_type, old.downstream_law, old.downstream_param, old.split1_law, old.split1_param, old.split2_law, old.split2_param) as o, (select new.downstream, new.downstream_type, new.split1, new.split1_type, new.split2, new.split2_type, new.downstream_law, new.downstream_param, new.split1_law, new.split1_param, new.split2_law, new.split2_param) as n into new_config;&#10;                        update model1._singularity set configuration&#61;new_config::json where id&#61;old.id;&#10;                    elsif old.configuration is not null then&#10;                        select &#39;{ &quot;&#39; || config_name || &#39;&quot;:&#39; || row_to_json(n) ||&#39;}&#39; from (select new.downstream, new.downstream_type, new.split1, new.split1_type, new.split2, new.split2_type, new.downstream_law, new.downstream_param, new.split1_law, new.split1_param, new.split2_law, new.split2_param) n into new_config;&#10;                        update model1._singularity set configuration&#61;(configuration::jsonb|| new_config::jsonb)::json where id&#61;old.id;&#10;                    end if;&#10;                end if;&#10;            end if;&#10;            /* find the node if not specified */&#10;            select id, node_type, geom from model1._node where ST_DWithin(new.geom, geom, .1) order by ST_Distance(new.geom, geom) limit 1 into nid_, node_type_, point_;&#10;            if nid_ is null then&#10;                raise exception &#39;singularity % not on node % (distance %)&#39;, ST_AsText(new.geom), (select name from model1._node ORDER BY geom &lt;-&gt; new.geom limit 1), (select ST_Distance(new.geom, geom) from model1._node ORDER BY geom &lt;-&gt; new.geom limit 1);&#10;            end if;&#10;            update model1._singularity set node&#61;nid_, node_type&#61;node_type_, name&#61;new.name, comment&#61;new.comment where id&#61;old.id;&#10;            update model1._zq_split_hydrology_singularity set downstream&#61;new.downstream, downstream_type&#61;new.downstream_type, split1&#61;new.split1, split1_type&#61;new.split1_type, split2&#61;new.split2, split2_type&#61;new.split2_type, downstream_law&#61;new.downstream_law, downstream_param&#61;new.downstream_param::json, split1_law&#61;new.split1_law, split1_param&#61;new.split1_param::json, split2_law&#61;new.split2_law, split2_param&#61;new.split2_param::json where id&#61;old.id;&#10;            if &#39;zq_split_hydrology&#39; &#61; &#39;pipe_branch_marker&#39; and (select trigger_branch from model1.metadata) then&#10;                perform model1.branch_update_fct();&#10;            end if;&#10;            if &#39;zq_split_hydrology&#39; &#61; &#39;hydrograph_bc&#39; then&#10;                update model1.routing_hydrology_link set hydrograph&#61;null where down&#61;old.node;&#10;                update model1.connector_hydrology_link set hydrograph&#61;null where down&#61;old.node;&#10;                update model1.routing_hydrology_link set hydrograph&#61;new.id where down&#61;new.node;&#10;                update model1.connector_hydrology_link set hydrograph&#61;new.id where down&#61;new.node;&#10;            end if;&#10;            perform model1.add_configuration_fct(new.configuration::json, old.id, &#39;zq_split_hydrology_singularity&#39;);&#10;            update model1._singularity set validity &#61; (select (downstream is not null) and (split1 is not null) and (downstream_param is not null) and (split1_law is not null) and (split1_param is not null) and (split2 is null or split2_law is not null) and (split2 is null or split2_param is not null) from  model1._zq_split_hydrology_singularity where id &#61; old.id) where id &#61; old.id;&#10;            return new;&#10;        elsif tg_op &#61; &#39;DELETE&#39; then&#10;            if &#39;zq_split_hydrology&#39; &#61; &#39;hydrograph_bc&#39; then&#10;                update model1.routing_hydrology_link set hydrograph&#61;null where down&#61;old.node;&#10;                update model1.connector_hydrology_link set hydrograph&#61;null where down&#61;old.node;&#10;            end if;&#10;            delete from model1._zq_split_hydrology_singularity where id&#61;old.id;&#10;            delete from model1._singularity where id&#61;old.id;&#10;            if &#39;zq_split_hydrology&#39; &#61; &#39;pipe_branch_marker&#39; and (select trigger_branch from model1.metadata) then&#10;                perform model1.branch_update_fct();&#10;            end if;&#10;            return old;&#10;        end if;&#10;    end;</textarea>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div>
+                    <div class="pull-right hidden-xs">
+                        <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
+                        <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
+                    </div>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.2.4</a></strong>
+                </div>
+                <!-- /.container -->
+            </footer>
+        </div>
+        <!-- ./wrapper -->
+
+        <!-- jQuery 2.2.3 -->
+        <script src="../bower/admin-lte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="../bower/admin-lte/plugins/jQueryUI/jquery-ui.min.js"></script>
+        <!-- Bootstrap 3.3.5 -->
+        <script src="../bower/admin-lte/bootstrap/js/bootstrap.min.js"></script>
+        <!-- DataTables -->
+        <script src="../bower/datatables.net/jquery.dataTables.min.js"></script>
+        <script src="../bower/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="../bower/datatables.net-buttons/dataTables.buttons.min.js"></script>
+        <script src="../bower/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.html5.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.print.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.colVis.min.js"></script>
+        <!-- SheetJS -->
+        <script src="../bower/js-xlsx/xlsx.full.min.js"></script>
+        <!-- pdfmake -->
+        <script src="../bower/pdfmake/pdfmake.min.js"></script>
+        <script src="../bower/pdfmake/vfs_fonts.js"></script>
+        <!-- SlimScroll -->
+        <script src="../bower/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="../bower/admin-lte/plugins/fastclick/fastclick.js"></script>
+        <!-- Salvattore -->
+        <script src="../bower/salvattore/salvattore.min.js"></script>
+        <!-- AnchorJS -->
+        <script src="../bower/anchor-js/anchor.min.js"></script>
+        <!-- CodeMirror -->
+        <script src="../bower/codemirror/codemirror.js"></script>
+        <script src="../bower/codemirror/sql.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../bower/admin-lte/dist/js/app.min.js"></script>
+        <script src="routine.js"></script>
+        <script src="../schemaSpy.js"></script>
+    </body>
+</html>

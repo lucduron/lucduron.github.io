@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>riverbank - hydra.model1</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
+        <!-- Bootstrap 3.3.5 -->
+        <link rel="stylesheet" href="../bower/admin-lte/bootstrap/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="../bower/font-awesome/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="../bower/ionicons/css/ionicons.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="../bower/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="../bower/datatables.net-buttons-bs/css/buttons.bootstrap.min.css">
+        <!-- Code Mirror -->
+        <link rel="stylesheet" href="../bower/codemirror/codemirror.css">
+        <!-- Fonts -->
+        <link href='../fonts/indieflower/indie-flower.css' rel='stylesheet' type='text/css'>
+        <link href='../fonts/source-sans-pro/source-sans-pro.css' rel='stylesheet' type='text/css'>
+
+        <!-- Theme style -->
+        <link rel="stylesheet" href="../bower/admin-lte/dist/css/AdminLTE.min.css">
+        <!-- Salvattore -->
+        <link rel="stylesheet" href="../bower/salvattore/salvattore.css">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+           folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="../bower/admin-lte/dist/css/skins/_all-skins.min.css">
+        <!-- SchemaSpy -->
+        <link rel="stylesheet" href="../schemaSpy.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="../bower/html5shiv/html5shiv.min.js"></script>
+        <script src="../bower/respond/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+    <body class="hold-transition skin-blue layout-top-nav">
+        <div class="wrapper">
+            <header class="main-header">
+                <nav class="navbar navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a href="../index.html" class="navbar-brand"><b>hydra</b></a><span class="navbar-brand" style="padding-left: 0">.model1</span>
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="../index.html">Tables <span class="sr-only">(current)</span></a></li>
+                                <li><a href="../columns.html" title="All of the columns in the schema">Columns</a></li>
+                                <li><a href="../constraints.html" title="Useful for diagnosing error messages that just give constraint name or number">Constraints</a></li>
+                                <li><a href="../relationships.html" title="Diagram of table relationships">Relationships</a></li>
+                                <li><a href="../orphans.html" title="View of tables with neither parents nor children">Orphan&nbsp;Tables</a></li>
+                                <li><a href="../anomalies.html" title="Things that might not be quite right">Anomalies</a></li>
+                                <li><a href="../routines.html" title="Procedures and functions">Routines</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                        <!-- Navbar Right Menu -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+            </header>
+            <!-- Main content -->
+            <!-- Full Width Column -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>riverbank</h1><p><span id="recordNumber">0</span> rows</p><br />
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                            <h3 id="Columns" class="box-title">Columns</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <table
+                                    id="standard_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
+                                <thead align='left'>
+                                <tr>
+                                    <th>Column</th>
+                                    <th>Type</th>
+                                    <th>Size</th>
+                                    <th title='Are nulls allowed?'>Nulls</th>
+                                    <th title='Is column automatically updated?'>Auto</th>
+                                    <th title='Default value'>Default</th>
+                                    <th title='Columns in tables that reference this column'>Children</th>
+                                    <th title='Columns in tables that are referenced by this column'>Parents</th>
+                                    <th title='Comments' class="toggle"><span>Comments</span></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><span id="id">id</span></td>
+                                    <td>int8</td>
+                                    <td>19</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="coverage">coverage</span></td>
+                                    <td>int4</td>
+                                    <td>10</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="geom">geom</span></td>
+                                    <td>geometry</td>
+                                    <td>2147483647</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="major">major</span></td>
+                                    <td>geometry</td>
+                                    <td>2147483647</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="reach">reach</span></td>
+                                    <td>geometry</td>
+                                    <td>2147483647</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="side">side</span></td>
+                                    <td>text</td>
+                                    <td>2147483647</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="start_half_transect">start_half_transect</span></td>
+                                    <td>geometry</td>
+                                    <td>2147483647</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="end_half_transect">end_half_transect</span></td>
+                                    <td>geometry</td>
+                                    <td>2147483647</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="bank">bank</span></td>
+                                    <td>geometry</td>
+                                    <td>2147483647</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="elem_length">elem_length</span></td>
+                                    <td>float4</td>
+                                    <td>8,8</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-code-fork"></i>
+                            <h3 id="Relationships" class="box-title">Relationships</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="nav-tabs-custom"><!-- Tabs within a box -->
+                                <h5>Close relationships within degrees of separation</h5>
+                                <ul class="nav nav-tabs pull-left ui-sortable-handle">
+                                    <li class="active"><a href="#oneDegreeImg-chart" data-toggle="tab" aria-expanded="true">One</a></li>
+                                </ul>
+                                <div class="tab-content no-padding">
+                                    <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        
+                                        <a name='diagram'><object type="image/svg+xml" id="oneDegreeImg" data="../diagrams/tables/riverbank.1degree.svg" class="diagram" border="0" align="left"></object></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-file-code-o"></i>
+                            <h3 id="ViewDefinition" class="box-title">View Definition</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <textarea id="sql-script-codemirror" name="sql-script-codemirror" rows="" style="display: none;">WITH blade AS (&#10;         SELECT st_linemerge(st_collect(t_1.geom)) AS geom&#10;           FROM ( SELECT COALESCE(st_snap(st_force2d(r.geom), st_collect(st_force2d(l.geom)), (0.1)::double precision), st_force2d(r.geom)) AS geom&#10;                   FROM (model1.open_reach r&#10;                     LEFT JOIN model1.connector_link l ON (st_dwithin(r.geom, l.geom, (0.1)::double precision)))&#10;                  GROUP BY r.geom&#10;                UNION&#10;                 SELECT st_force2d(l.geom) AS geom&#10;                   FROM (model1.open_reach r&#10;                     LEFT JOIN model1.connector_link l ON ((st_dwithin(r.geom, l.geom, (0.1)::double precision) AND st_dwithin(st_collect(ARRAY[st_startpoint(r.geom), st_endpoint(r.geom)]), l.geom, (0.1)::double precision))))) t_1&#10;        ), cov AS (&#10;         SELECT c.id AS coverage,&#10;            st_force2d(c.geom) AS geom,&#10;            st_collect(d_1.geom) AS blade,&#10;            t_1.transects,&#10;            st_difference(st_force2d(st_exteriorring(c.geom)), t_1.discretized) AS mbanks,&#10;            t_1.elem_length&#10;           FROM (((model1.coverage c&#10;             CROSS JOIN blade b_1)&#10;             CROSS JOIN LATERAL ( SELECT st_collect(st_force2d(t_2.geom)) AS transects,&#10;                    st_collect(st_force2d(t_2.discretized)) AS discretized,&#10;                    min(t_2.elem_length) AS elem_length&#10;                   FROM model1.constrain t_2&#10;                  WHERE ((t_2.geom &amp;&amp; c.geom) AND (st_length(st_intersection(t_2.discretized, c.geom)) &gt; (0)::double precision) AND (t_2.constrain_type &#61; &#39;flood_plain_transect&#39;::hydra_constrain_type))) t_1)&#10;             JOIN LATERAL st_dump(b_1.geom) d_1(path, geom) ON (st_intersects(d_1.geom, c.geom)))&#10;          WHERE (c.domain_type &#61; &#39;reach&#39;::hydra_coverage_type)&#10;          GROUP BY c.id, c.geom, t_1.transects, t_1.discretized, t_1.elem_length&#10;        ), covr AS (&#10;         SELECT c.coverage,&#10;            d_1.geom,&#10;            c.blade,&#10;            st_linemerge(st_intersection(st_snap(c.blade, d_1.geom, (0.1)::double precision), st_exteriorring(d_1.geom))) AS reach,&#10;            c.transects,&#10;            c.mbanks,&#10;            c.elem_length&#10;           FROM (cov c&#10;             CROSS JOIN LATERAL st_dump(st_split(c.geom, c.blade)) d_1(path, geom))&#10;        ), bank AS (&#10;         SELECT c.geom AS side,&#10;            c.reach,&#10;            s.geom AS start_,&#10;            e.geom AS end_,&#10;            project.line_offset(c.reach, s.geom, e.geom, c.geom) AS geom,&#10;            c.coverage,&#10;            e.transect AS end_transect,&#10;            s.transect AS start_transect,&#10;            COALESCE(left_.geom, st_makeline(st_startpoint(s.transect), st_startpoint(e.transect))) AS left_,&#10;            COALESCE(right_.geom, st_makeline(st_endpoint(s.transect), st_endpoint(e.transect))) AS right_,&#10;            c.elem_length&#10;           FROM ((((covr c&#10;             CROSS JOIN LATERAL ( SELECT p.geom,&#10;                    ((p.path[1] &#61; 1) OR (p.path[1] &#61; st_numpoints(t_1.geom))) AS is_end,&#10;                    t_1.geom AS transect&#10;                   FROM (st_dump(c.transects) t_1(path, geom)&#10;                     CROSS JOIN LATERAL st_dumppoints(t_1.geom) p(path, geom))&#10;                  WHERE (st_dwithin(p.geom, c.geom, (0.1)::double precision) AND st_dwithin(t_1.geom, st_startpoint(c.reach), (0.1)::double precision))&#10;                  ORDER BY (st_distance(p.geom, st_startpoint(c.reach)))&#10;                 LIMIT 1) s)&#10;             CROSS JOIN LATERAL ( SELECT p.geom,&#10;                    ((p.path[1] &#61; 1) OR (p.path[1] &#61; st_numpoints(t_1.geom))) AS is_end,&#10;                    t_1.geom AS transect&#10;                   FROM (st_dump(c.transects) t_1(path, geom)&#10;                     CROSS JOIN LATERAL st_dumppoints(t_1.geom) p(path, geom))&#10;                  WHERE (st_dwithin(p.geom, c.geom, (0.1)::double precision) AND st_dwithin(t_1.geom, st_endpoint(c.reach), (0.1)::double precision))&#10;                  ORDER BY (st_distance(p.geom, st_endpoint(c.reach)))&#10;                 LIMIT 1) e)&#10;             LEFT JOIN LATERAL ( SELECT d_1.geom&#10;                   FROM st_dump(c.mbanks) d_1(path, geom)&#10;                  WHERE st_dwithin(d_1.geom, st_startpoint(e.transect), (0.1)::double precision)) left_ ON (true))&#10;             LEFT JOIN LATERAL ( SELECT d_1.geom&#10;                   FROM st_dump(c.mbanks) d_1(path, geom)&#10;                  WHERE st_dwithin(d_1.geom, st_endpoint(e.transect), (0.1)::double precision)) right_ ON (true))&#10;          WHERE ((NOT (e.is_end AND s.is_end)) AND (NOT (s.geom &#61; e.geom)))&#10;        )&#10; SELECT row_number() OVER () AS id,&#10;    b.coverage,&#10;    b.geom,&#10;    d.geom AS major,&#10;    b.reach,&#10;    t.side,&#10;        CASE&#10;            WHEN (t.side &#61; &#39;left&#39;::text) THEN st_makeline(st_startpoint(b.start_transect), st_startpoint(b.reach))&#10;            ELSE st_makeline(st_startpoint(b.reach), st_endpoint(b.start_transect))&#10;        END AS start_half_transect,&#10;        CASE&#10;            WHEN (t.side &#61; &#39;left&#39;::text) THEN st_makeline(st_startpoint(b.end_transect), st_endpoint(b.reach))&#10;            ELSE st_makeline(st_endpoint(b.reach), st_endpoint(b.end_transect))&#10;        END AS end_half_transect,&#10;        CASE&#10;            WHEN (t.side &#61; &#39;left&#39;::text) THEN b.left_&#10;            ELSE b.right_&#10;        END AS bank,&#10;    b.elem_length&#10;   FROM ((bank b&#10;     CROSS JOIN LATERAL st_dump(st_polygonize(ARRAY[st_union(st_exteriorring(b.side), b.geom)])) d(path, geom))&#10;     CROSS JOIN LATERAL ( SELECT&#10;                CASE&#10;                    WHEN st_ispolygonccw(st_makepolygon(st_makeline(ARRAY[b.start_, st_pointn(b.reach, 1), st_pointn(b.reach, 2), b.start_]))) THEN &#39;left&#39;::text&#10;                    ELSE &#39;right&#39;::text&#10;                END AS side) t)&#10;  WHERE (NOT st_intersects(d.geom, b.reach));</textarea>
+                            <div style="padding-top: 5px;"><hr></div>
+                            <div class="box box-solid">
+                                <div class="box-header with-border">
+                                    <i class="fa fa-puzzle-piece"></i>
+                                    <h3 class="box-title">Possibly Referenced Tables/Views</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <ul class="list-unstyled">
+                                        <li><a href="coverage.html">coverage</a></li>
+                                        <li><a href="reach.html">reach</a></li>
+                                        <li><a href="bank.html">bank</a></li>
+                                    </ul>
+                                </div><!-- /.box-body -->
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div>
+                </section>
+                <script>
+                    var config = {
+                        pagination: true
+                    }
+                </script>
+            </div>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div>
+                    <div class="pull-right hidden-xs">
+                        <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
+                        <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
+                    </div>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.2.4</a></strong>
+                </div>
+                <!-- /.container -->
+            </footer>
+        </div>
+        <!-- ./wrapper -->
+
+        <!-- jQuery 2.2.3 -->
+        <script src="../bower/admin-lte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="../bower/admin-lte/plugins/jQueryUI/jquery-ui.min.js"></script>
+        <!-- Bootstrap 3.3.5 -->
+        <script src="../bower/admin-lte/bootstrap/js/bootstrap.min.js"></script>
+        <!-- DataTables -->
+        <script src="../bower/datatables.net/jquery.dataTables.min.js"></script>
+        <script src="../bower/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="../bower/datatables.net-buttons/dataTables.buttons.min.js"></script>
+        <script src="../bower/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.html5.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.print.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.colVis.min.js"></script>
+        <!-- SheetJS -->
+        <script src="../bower/js-xlsx/xlsx.full.min.js"></script>
+        <!-- pdfmake -->
+        <script src="../bower/pdfmake/pdfmake.min.js"></script>
+        <script src="../bower/pdfmake/vfs_fonts.js"></script>
+        <!-- SlimScroll -->
+        <script src="../bower/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="../bower/admin-lte/plugins/fastclick/fastclick.js"></script>
+        <!-- Salvattore -->
+        <script src="../bower/salvattore/salvattore.min.js"></script>
+        <!-- AnchorJS -->
+        <script src="../bower/anchor-js/anchor.min.js"></script>
+        <!-- CodeMirror -->
+        <script src="../bower/codemirror/codemirror.js"></script>
+        <script src="../bower/codemirror/sql.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../bower/admin-lte/dist/js/app.min.js"></script>
+        <script src="table.js"></script>
+        <script src="../schemaSpy.js"></script>
+    </body>
+</html>

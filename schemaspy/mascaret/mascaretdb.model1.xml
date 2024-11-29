@@ -1,0 +1,835 @@
+<?xml version="1.0" encoding="UTF-8"?><database name="mascaretdb" schema="model1" type="PostgreSQL - 17.2">
+   <sequences>
+      <sequence increment="1" name="admin_tab_id__seq" startValue="1"/>
+      <sequence increment="1" name="basins_basinnum_seq" startValue="1"/>
+      <sequence increment="1" name="basins_gid_seq" startValue="1"/>
+      <sequence increment="1" name="branchs_branch_seq" startValue="1"/>
+      <sequence increment="1" name="branchs_gid_seq" startValue="1"/>
+      <sequence increment="1" name="branchs_zonenum_seq" startValue="1"/>
+      <sequence increment="1" name="extremities_gid_seq" startValue="1"/>
+      <sequence increment="1" name="flood_marks_gid_seq" startValue="1"/>
+      <sequence increment="1" name="hydraulic_head_gid_seq" startValue="1"/>
+      <sequence increment="1" name="init_conc_config_id_seq" startValue="1"/>
+      <sequence increment="1" name="lateral_inflows_gid_seq" startValue="1"/>
+      <sequence increment="1" name="lateral_weirs_gid_seq" startValue="1"/>
+      <sequence increment="1" name="law_config_id_seq" startValue="1"/>
+      <sequence increment="1" name="links_gid_seq" startValue="1"/>
+      <sequence increment="1" name="links_linknum_seq" startValue="1"/>
+      <sequence increment="1" name="meteo_config_id_seq" startValue="1"/>
+      <sequence increment="1" name="observations_id_seq" startValue="1"/>
+      <sequence increment="1" name="outputs_gid_seq" startValue="1"/>
+      <sequence increment="1" name="parametres_id_seq" startValue="1"/>
+      <sequence increment="1" name="profiles_gid_seq" startValue="1"/>
+      <sequence increment="1" name="results_idx_idruntpk_seq" startValue="1"/>
+      <sequence increment="1" name="results_var_id_seq" startValue="1"/>
+      <sequence increment="1" name="runs_graph_id_seq" startValue="1"/>
+      <sequence increment="1" name="runs_id_seq" startValue="1"/>
+      <sequence increment="1" name="runs_plani_id_seq" startValue="1"/>
+      <sequence increment="1" name="struct_config_id_seq" startValue="1"/>
+      <sequence increment="1" name="topo_gid_seq" startValue="1"/>
+      <sequence increment="1" name="tracer_config_id_seq" startValue="1"/>
+      <sequence increment="1" name="tracer_lateral_inflows_gid_seq" startValue="1"/>
+      <sequence increment="1" name="tracer_name_id_seq" startValue="1"/>
+      <sequence increment="1" name="tracer_physic_id_seq" startValue="1"/>
+      <sequence increment="1" name="visu_flood_marks_gid_seq" startValue="1"/>
+      <sequence increment="1" name="weirs_gid_seq" startValue="1"/>
+   </sequences>
+   <tables>
+      <table name="admin_tab" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('model1.admin_tab_id__seq'::regclass)" digits="0" id="0" name="id_" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="table_" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="version_" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="id_" sequenceNumberInPK="1"/>
+         <primaryKey column="table_" sequenceNumberInPK="2"/>
+         <primaryKey column="version_" sequenceNumberInPK="3"/>
+         <index name="cle_admin_tab" unique="true">
+            <column ascending="true" name="id_"/>
+            <column ascending="true" name="table_"/>
+            <column ascending="true" name="version_"/>
+         </index>
+      </table>
+      <table name="basins" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.basins_gid_seq'::regclass)" digits="0" id="1" name="gid" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name" nullable="true" remarks="" size="30" type="varchar" typeCode="12">
+            <parent column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="events"/>
+         </column>
+         <column autoUpdated="true" defaultValue="nextval('model1.basins_basinnum_seq'::regclass)" digits="0" id="3" name="basinnum" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="initlevel" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="level" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="area" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="volume" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="8" name="active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="gid" sequenceNumberInPK="1"/>
+         <index name="basins_pkey" unique="true">
+            <column ascending="true" name="gid"/>
+         </index>
+         <index name="basin_name_unique" unique="true">
+            <column ascending="true" name="name"/>
+         </index>
+         <index name="basin_num_unique" unique="true">
+            <column ascending="true" name="basinnum"/>
+         </index>
+         <index name="basins_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="branchs" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.branchs_gid_seq'::regclass)" digits="0" id="1" name="gid" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.branchs_branch_seq'::regclass)" digits="0" id="2" name="branch" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="startb" nullable="true" remarks="" size="30" type="varchar" typeCode="12">
+            <parent column="name" foreignKey="cle_fin" implied="false" onDeleteCascade="false" schema="model1" table="extremities"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="endb" nullable="true" remarks="" size="30" type="varchar" typeCode="12"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.branchs_zonenum_seq'::regclass)" digits="0" id="5" name="zonenum" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="6" name="zoneabsstart" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="7" name="zoneabsend" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="8" name="minbedcoef" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="9" name="majbedcoef" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="10" name="mesh" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="11" name="planim" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="12" name="active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="gid" sequenceNumberInPK="1"/>
+         <index name="branchs_pkey" unique="true">
+            <column ascending="true" name="gid"/>
+         </index>
+         <index name="branchs_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="events" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="name" nullable="false" remarks="" size="30" type="varchar" typeCode="12">
+            <child column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="basins"/>
+            <child column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="extremities"/>
+            <child column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="flood_marks"/>
+            <child column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="hydraulic_head"/>
+            <child column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="init_conc_config"/>
+            <child column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="lateral_inflows"/>
+            <child column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="lateral_weirs"/>
+            <child column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="links"/>
+            <child column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="meteo_config"/>
+            <child column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="outputs"/>
+            <child column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="profiles"/>
+            <child column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="struct_config"/>
+            <child column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="topo"/>
+            <child column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="tracer_config"/>
+            <child column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="tracer_lateral_inflows"/>
+            <child column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="weirs"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="1" name="starttime" nullable="true" remarks="" size="29" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="2" name="endtime" nullable="true" remarks="" size="29" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="run" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="name" sequenceNumberInPK="1"/>
+         <index name="cle_events" unique="true">
+            <column ascending="true" name="name"/>
+         </index>
+      </table>
+      <table name="extremities" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.extremities_gid_seq'::regclass)" digits="0" id="1" name="gid" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name" nullable="true" remarks="" size="30" type="varchar" typeCode="12">
+            <child column="startb" foreignKey="cle_fin" implied="false" onDeleteCascade="false" schema="model1" table="branchs"/>
+            <parent column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="events"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="type" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="method" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="5" name="firstvalue" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="abscissa" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="ordinates" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="angles" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="9" name="active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="tracer_boundary_condition_type" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="law_wq" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="gid" sequenceNumberInPK="1"/>
+         <index name="cle_extremities" unique="true">
+            <column ascending="true" name="gid"/>
+         </index>
+         <index name="extremities_nom_key" unique="true">
+            <column ascending="true" name="name"/>
+         </index>
+      </table>
+      <table name="flood_marks" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.flood_marks_gid_seq'::regclass)" digits="0" id="1" name="gid" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name" nullable="true" remarks="" size="30" type="varchar" typeCode="12">
+            <parent column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="events"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="event" nullable="true" remarks="" size="30" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="branchnum" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="date" nullable="true" remarks="" size="13" type="date" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="6" name="abscissa" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="7" name="z" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="validate" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="comment" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="10" name="weir" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="adress" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="12" name="active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="13" name="township" nullable="true" remarks="" size="30" type="varchar" typeCode="12"/>
+         <primaryKey column="gid" sequenceNumberInPK="1"/>
+         <index name="flood_marks_pkey" unique="true">
+            <column ascending="true" name="gid"/>
+         </index>
+         <index name="flood_marks_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="hydraulic_head" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.hydraulic_head_gid_seq'::regclass)" digits="0" id="1" name="gid" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name" nullable="true" remarks="" size="30" type="varchar" typeCode="12">
+            <parent column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="events"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="branchnum" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="abscissa" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="5" name="coeff" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="6" name="active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="gid" sequenceNumberInPK="1"/>
+         <index name="hydraulic_head_pkey" unique="true">
+            <column ascending="true" name="gid"/>
+         </index>
+         <index name="hydraulic_head_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="init_conc_config" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('model1.init_conc_config_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="true" remarks="" size="30" type="varchar" typeCode="12">
+            <parent column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="events"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="type" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="active" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="cle_init_conc_conf" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="init_conc_wq" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id_config" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_trac" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="bief" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="3" name="abscissa" nullable="false" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="value" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <primaryKey column="id_config" sequenceNumberInPK="1"/>
+         <primaryKey column="id_trac" sequenceNumberInPK="2"/>
+         <primaryKey column="bief" sequenceNumberInPK="3"/>
+         <primaryKey column="abscissa" sequenceNumberInPK="4"/>
+         <index name="cle_init_conc_wq" unique="true">
+            <column ascending="true" name="id_config"/>
+            <column ascending="true" name="id_trac"/>
+            <column ascending="true" name="bief"/>
+            <column ascending="true" name="abscissa"/>
+         </index>
+      </table>
+      <table name="lateral_inflows" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.lateral_inflows_gid_seq'::regclass)" digits="0" id="1" name="gid" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name" nullable="true" remarks="" size="30" type="varchar" typeCode="12">
+            <parent column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="events"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="branchnum" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="abscissa" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="5" name="length" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="6" name="firstvalue" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="method" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="8" name="active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="gid" sequenceNumberInPK="1"/>
+         <index name="lateral_inflows_pkey" unique="true">
+            <column ascending="true" name="gid"/>
+         </index>
+         <index name="lateral_inflows_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="lateral_weirs" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.lateral_weirs_gid_seq'::regclass)" digits="0" id="1" name="gid" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name" nullable="true" remarks="" size="30" type="varchar" typeCode="12">
+            <parent column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="events"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="type" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="branchnum" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="5" name="abscissa" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="6" name="length" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="7" name="z_crest" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="8" name="flowratecoef" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="9" name="active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="gid" sequenceNumberInPK="1"/>
+         <index name="lateral_weir_pkey" unique="true">
+            <column ascending="true" name="gid"/>
+         </index>
+         <index name="lateral_weirs_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="law_config" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('model1.law_config_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="geom_obj" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="3" name="starttime" nullable="true" remarks="" size="29" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="4" name="endtime" nullable="true" remarks="" size="29" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="id_law_type" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="6" name="active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="comment" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="law_config_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="law_values" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id_law" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_var" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="id_order" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="3" name="value" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <primaryKey column="id_law" sequenceNumberInPK="1"/>
+         <primaryKey column="id_var" sequenceNumberInPK="2"/>
+         <primaryKey column="id_order" sequenceNumberInPK="3"/>
+         <index name="law_values_pkey" unique="true">
+            <column ascending="true" name="id_law"/>
+            <column ascending="true" name="id_var"/>
+            <column ascending="true" name="id_order"/>
+         </index>
+      </table>
+      <table name="laws_meteo" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id_config" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_var" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="2" name="time" nullable="false" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="3" name="value" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <primaryKey column="id_config" sequenceNumberInPK="1"/>
+         <primaryKey column="id_var" sequenceNumberInPK="2"/>
+         <primaryKey column="time" sequenceNumberInPK="3"/>
+         <index name="cle_laws_met" unique="true">
+            <column ascending="true" name="id_config"/>
+            <column ascending="true" name="id_var"/>
+            <column ascending="true" name="time"/>
+         </index>
+      </table>
+      <table name="laws_wq" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id_config" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_trac" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="2" name="time" nullable="false" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="3" name="value" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="active" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="id_config" sequenceNumberInPK="1"/>
+         <primaryKey column="id_trac" sequenceNumberInPK="2"/>
+         <primaryKey column="time" sequenceNumberInPK="3"/>
+         <index name="cle_laws_wq" unique="true">
+            <column ascending="true" name="id_config"/>
+            <column ascending="true" name="id_trac"/>
+            <column ascending="true" name="time"/>
+         </index>
+      </table>
+      <table name="links" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.links_gid_seq'::regclass)" digits="0" id="1" name="gid" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name" nullable="true" remarks="" size="30" type="varchar" typeCode="12">
+            <parent column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="events"/>
+         </column>
+         <column autoUpdated="true" defaultValue="nextval('model1.links_linknum_seq'::regclass)" digits="0" id="3" name="linknum" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="type" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="nature" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="6" name="level" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="7" name="length" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="8" name="width" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="9" name="roughness" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="10" name="crosssection" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="11" name="headlosscoef" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="12" name="weirdischargecoef" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="13" name="activationcoef" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="14" name="pipedischargecoef" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="culverttype" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="16" name="basinstart" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="17" name="basinend" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="18" name="branchnum" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="19" name="abscissa" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="20" name="active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="gid" sequenceNumberInPK="1"/>
+         <index name="links_pkey" unique="true">
+            <column ascending="true" name="gid"/>
+         </index>
+         <index name="link_name_unique" unique="true">
+            <column ascending="true" name="name"/>
+         </index>
+         <index name="link_num_unique" unique="true">
+            <column ascending="true" name="linknum"/>
+         </index>
+         <index name="links_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="meteo_config" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('model1.meteo_config_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="true" remarks="" size="30" type="varchar" typeCode="12">
+            <parent column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="events"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="2" name="starttime" nullable="true" remarks="" size="29" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="active" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="cle_met_conf" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="observations" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('model1.observations_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="code" nullable="true" remarks="" size="10" type="bpchar" typeCode="1"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="type" nullable="true" remarks="" size="1" type="bpchar" typeCode="1"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="comment" nullable="true" remarks="" size="50" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="valeur" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="5" name="date" nullable="true" remarks="" size="29" type="timestamp" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="cle_obs" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="observations_code_type" unique="false">
+            <column ascending="true" name="code"/>
+            <column ascending="true" name="type"/>
+         </index>
+      </table>
+      <table name="outputs" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.outputs_gid_seq'::regclass)" digits="0" id="1" name="gid" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name" nullable="true" remarks="" size="30" type="varchar" typeCode="12">
+            <parent column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="events"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="code" nullable="true" remarks="" size="30" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="zero" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="branchnum" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="6" name="abscissa" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="7" name="active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="gid" sequenceNumberInPK="1"/>
+         <index name="outputs_pkey" unique="true">
+            <column ascending="true" name="gid"/>
+         </index>
+         <index name="outputs_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="parametres" numRows="100" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('model1.parametres_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="parametre" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="steady" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="unsteady" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="transcritical" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="libelle" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="balise1" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="balise2" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="gui" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="gui_type" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="cle_param" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="profil_struct" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id_config" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_order" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="2" name="x" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="3" name="z" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <primaryKey column="id_order" sequenceNumberInPK="1"/>
+         <primaryKey column="id_config" sequenceNumberInPK="2"/>
+         <index name="profil_struct_pkey" unique="true">
+            <column ascending="true" name="id_order"/>
+            <column ascending="true" name="id_config"/>
+         </index>
+      </table>
+      <table name="profiles" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.profiles_gid_seq'::regclass)" digits="0" id="1" name="gid" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name" nullable="true" remarks="" size="30" type="varchar" typeCode="12">
+            <parent column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="events"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="branchnum" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="abscissa" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="x" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="z" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="7" name="leftminbed" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="8" name="rightminbed" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="9" name="leftstock" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="10" name="rightstock" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="xmnt" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="zmnt" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="13" name="active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="14" name="struct" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="15" name="zleftminbed" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="16" name="zrightminbed" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <primaryKey column="gid" sequenceNumberInPK="1"/>
+         <index name="profiles_pkey" unique="true">
+            <column ascending="true" name="gid"/>
+         </index>
+         <index name="profile_unique" unique="true">
+            <column ascending="true" name="name"/>
+         </index>
+         <index name="profiles_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="results" numRows="0" remarks="" schema="model1" type="VIEW" viewSql=" SELECT results_idx.id_runs,&#10;    results_idx.&quot;time&quot;,&#10;    results_idx.pknum,&#10;    results_val.var,&#10;    results_val.val&#10;   FROM (model1.results_idx&#10;     JOIN model1.results_val ON ((results_val.idruntpk = results_idx.idruntpk)));">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id_runs" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="1" name="time" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="2" name="pknum" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="var" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="val" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+      </table>
+      <table name="results_idx" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('model1.results_idx_idruntpk_seq'::regclass)" digits="0" id="0" name="idruntpk" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_runs" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="2" name="time" nullable="false" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="3" name="pknum" nullable="false" remarks="" size="17" type="float8" typeCode="8"/>
+         <primaryKey column="id_runs" sequenceNumberInPK="1"/>
+         <primaryKey column="time" sequenceNumberInPK="2"/>
+         <primaryKey column="pknum" sequenceNumberInPK="3"/>
+         <index name="results_idx_pkey" unique="true">
+            <column ascending="true" name="id_runs"/>
+            <column ascending="true" name="time"/>
+            <column ascending="true" name="pknum"/>
+         </index>
+         <index name="results_idx_id_runs_pknum" unique="false">
+            <column ascending="true" name="id_runs"/>
+            <column ascending="true" name="pknum"/>
+         </index>
+         <index name="results_idx_id_runs_time" unique="false">
+            <column ascending="true" name="id_runs"/>
+            <column ascending="true" name="time"/>
+         </index>
+      </table>
+      <table name="results_sect" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id_runs" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="1" name="pk" nullable="false" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="branch" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="section" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <primaryKey column="id_runs" sequenceNumberInPK="1"/>
+         <primaryKey column="pk" sequenceNumberInPK="2"/>
+         <primaryKey column="branch" sequenceNumberInPK="3"/>
+         <index name="results_sect_pkey" unique="true">
+            <column ascending="true" name="id_runs"/>
+            <column ascending="true" name="pk"/>
+            <column ascending="true" name="branch"/>
+         </index>
+         <index name="results_sect_id_runs_pknum" unique="false">
+            <column ascending="true" name="id_runs"/>
+            <column ascending="true" name="pk"/>
+         </index>
+      </table>
+      <table name="results_val" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="idruntpk" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="var" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="2" name="val" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <primaryKey column="idruntpk" sequenceNumberInPK="1"/>
+         <primaryKey column="var" sequenceNumberInPK="2"/>
+         <index name="results_val_pkey" unique="true">
+            <column ascending="true" name="idruntpk"/>
+            <column ascending="true" name="var"/>
+         </index>
+         <index name="results_val_idruntpk" unique="false">
+            <column ascending="true" name="idruntpk"/>
+            <column ascending="true" name="var"/>
+         </index>
+      </table>
+      <table name="results_var" numRows="74" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('model1.results_var_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="type_res" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="var" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="name" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="type_var" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="type_res" sequenceNumberInPK="1"/>
+         <primaryKey column="var" sequenceNumberInPK="2"/>
+         <index name="results_var_pkey" unique="true">
+            <column ascending="true" name="type_res"/>
+            <column ascending="true" name="var"/>
+         </index>
+      </table>
+      <table name="runs" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('model1.runs_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="run" nullable="true" remarks="" size="30" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="scenario" nullable="true" remarks="" size="30" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="3" name="date" nullable="true" remarks="" size="29" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="4" name="init_date" nullable="true" remarks="" size="29" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="t" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="pk" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="comments" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="wq" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="cle_runs" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="runs_graph" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('model1.runs_graph_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_runs" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="type_res" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="var" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="val" nullable="true" remarks="" size="2147483647" type="json" typeCode="1111"/>
+         <primaryKey column="id_runs" sequenceNumberInPK="1"/>
+         <primaryKey column="type_res" sequenceNumberInPK="2"/>
+         <primaryKey column="var" sequenceNumberInPK="3"/>
+         <index name="runs_graph_pkey" unique="true">
+            <column ascending="true" name="id_runs"/>
+            <column ascending="true" name="type_res"/>
+            <column ascending="true" name="var"/>
+         </index>
+      </table>
+      <table name="runs_plani" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('model1.runs_plani_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_runs" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="2" name="pknum" nullable="false" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="id_type" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="id_order" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="line" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <primaryKey column="id_runs" sequenceNumberInPK="1"/>
+         <primaryKey column="pknum" sequenceNumberInPK="2"/>
+         <primaryKey column="id_type" sequenceNumberInPK="3"/>
+         <primaryKey column="id_order" sequenceNumberInPK="4"/>
+         <index name="runs_plani_pkey" unique="true">
+            <column ascending="true" name="id_runs"/>
+            <column ascending="true" name="pknum"/>
+            <column ascending="true" name="id_type"/>
+            <column ascending="true" name="id_order"/>
+         </index>
+      </table>
+      <table name="struct_abac" numRows="499" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="nam_method" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="nam_abac" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="var" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="id_order" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="value" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <primaryKey column="id_order" sequenceNumberInPK="1"/>
+         <primaryKey column="nam_method" sequenceNumberInPK="2"/>
+         <primaryKey column="nam_abac" sequenceNumberInPK="3"/>
+         <primaryKey column="var" sequenceNumberInPK="4"/>
+         <index name="cle_struct_abac" unique="true">
+            <column ascending="true" name="id_order"/>
+            <column ascending="true" name="nam_method"/>
+            <column ascending="true" name="nam_abac"/>
+            <column ascending="true" name="var"/>
+         </index>
+      </table>
+      <table name="struct_config" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('model1.struct_config_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="true" remarks="" size="30" type="varchar" typeCode="12">
+            <parent column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="events"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="type" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="method" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="active" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="5" name="abscissa" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="branchnum" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="id_prof_ori" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="comment" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="cle_struct_conf" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="struct_elem" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id_config" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_elem" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="type" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="polygon" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <primaryKey column="id_config" sequenceNumberInPK="1"/>
+         <primaryKey column="id_elem" sequenceNumberInPK="2"/>
+         <index name="cle_struct_elem" unique="true">
+            <column ascending="true" name="id_config"/>
+            <column ascending="true" name="id_elem"/>
+         </index>
+      </table>
+      <table name="struct_elem_param" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id_config" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_elem" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="var" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="3" name="value" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <primaryKey column="id_config" sequenceNumberInPK="1"/>
+         <primaryKey column="id_elem" sequenceNumberInPK="2"/>
+         <primaryKey column="var" sequenceNumberInPK="3"/>
+         <index name="cle_struct_elem_param" unique="true">
+            <column ascending="true" name="id_config"/>
+            <column ascending="true" name="id_elem"/>
+            <column ascending="true" name="var"/>
+         </index>
+      </table>
+      <table name="struct_fg" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id_config" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_scen" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="active" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="type_fg" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="xpos" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="var_reg" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="id_config" sequenceNumberInPK="1"/>
+         <primaryKey column="id_scen" sequenceNumberInPK="2"/>
+         <index name="cle_struct_fg" unique="true">
+            <column ascending="true" name="id_config"/>
+            <column ascending="true" name="id_scen"/>
+         </index>
+      </table>
+      <table name="struct_fg_val" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id_config" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_scen" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="id_order" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="name_var" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="value" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <primaryKey column="id_config" sequenceNumberInPK="1"/>
+         <primaryKey column="id_scen" sequenceNumberInPK="2"/>
+         <primaryKey column="id_order" sequenceNumberInPK="3"/>
+         <primaryKey column="name_var" sequenceNumberInPK="4"/>
+         <index name="cle_struct_fg_val" unique="true">
+            <column ascending="true" name="id_config"/>
+            <column ascending="true" name="id_scen"/>
+            <column ascending="true" name="id_order"/>
+            <column ascending="true" name="name_var"/>
+         </index>
+      </table>
+      <table name="struct_laws" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id_config" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_var" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="id_order" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="3" name="value" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <primaryKey column="id_config" sequenceNumberInPK="1"/>
+         <primaryKey column="id_var" sequenceNumberInPK="2"/>
+         <primaryKey column="id_order" sequenceNumberInPK="3"/>
+         <index name="cle_struct_laws" unique="true">
+            <column ascending="true" name="id_config"/>
+            <column ascending="true" name="id_var"/>
+            <column ascending="true" name="id_order"/>
+         </index>
+      </table>
+      <table name="struct_param" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id_config" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="var" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="2" name="value" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <primaryKey column="id_config" sequenceNumberInPK="1"/>
+         <primaryKey column="var" sequenceNumberInPK="2"/>
+         <index name="cle_struct_param" unique="true">
+            <column ascending="true" name="id_config"/>
+            <column ascending="true" name="var"/>
+         </index>
+      </table>
+      <table name="topo" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.topo_gid_seq'::regclass)" digits="0" id="1" name="gid" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name" nullable="true" remarks="" size="30" type="varchar" typeCode="12">
+            <parent column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="events"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="profile" nullable="true" remarks="" size="30" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="order_" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="5" name="x" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="6" name="z" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <primaryKey column="gid" sequenceNumberInPK="1"/>
+         <index name="topo_pkey" unique="true">
+            <column ascending="true" name="gid"/>
+         </index>
+         <index name="topo_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="tracer_config" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('model1.tracer_config_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="true" remarks="" size="30" type="varchar" typeCode="12">
+            <parent column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="events"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="type" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="cle_tr_conf" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="tracer_lateral_inflows" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.tracer_lateral_inflows_gid_seq'::regclass)" digits="0" id="1" name="gid" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name" nullable="true" remarks="" size="30" type="varchar" typeCode="12">
+            <parent column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="events"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="branchnum" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="abscissa" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="5" name="length" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="law_wq" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="typesources" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="8" name="active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="gid" sequenceNumberInPK="1"/>
+         <index name="tracer_lateral_inflows_pkey" unique="true">
+            <column ascending="true" name="gid"/>
+         </index>
+         <index name="tracer_lateral_inflows_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="tracer_name" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('model1.tracer_name_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="type" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="sigle" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="text" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="textfr" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="convec" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="diffu" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="cle_tr_name" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="tracer_physic" numRows="87" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('model1.tracer_physic_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="type" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="sigle" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="value" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="text" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="textfr" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="cle_tr_phy" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="visu_flood_marks" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.visu_flood_marks_gid_seq'::regclass)" digits="0" id="1" name="gid" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="id_marks" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <primaryKey column="gid" sequenceNumberInPK="1"/>
+         <primaryKey column="id_marks" sequenceNumberInPK="2"/>
+         <index name="visu_flood_marks_pkey" unique="true">
+            <column ascending="true" name="gid"/>
+            <column ascending="true" name="id_marks"/>
+         </index>
+         <index name="visu_flood_marks_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="weirs" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="geom" nullable="true" remarks="" size="2147483647" type="geometry" typeCode="1111"/>
+         <column autoUpdated="true" defaultValue="nextval('model1.weirs_gid_seq'::regclass)" digits="0" id="1" name="gid" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name" nullable="true" remarks="" size="30" type="varchar" typeCode="12">
+            <parent column="name" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="model1" table="events"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="type" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="branchnum" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="5" name="abscissa" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="6" name="z_crest" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="7" name="z_average_crest" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="10000" digits="17" id="8" name="z_break" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="9" name="flowratecoeff" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="thickness" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="11" name="wide_floodgate" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="lawfile" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="13" name="active" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="14" name="active_mob" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="method_mob" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="gid" sequenceNumberInPK="1"/>
+         <index name="weirs_pkey" unique="true">
+            <column ascending="true" name="gid"/>
+         </index>
+         <index name="weirs_geom_idx" unique="false">
+            <column ascending="true" name="geom"/>
+         </index>
+      </table>
+      <table name="weirs_mob_val" remarks="" schema="model1" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id_weirs" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="id_order" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name_var" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="3" name="value" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <primaryKey column="id_weirs" sequenceNumberInPK="1"/>
+         <primaryKey column="id_order" sequenceNumberInPK="2"/>
+         <primaryKey column="name_var" sequenceNumberInPK="3"/>
+         <index name="cle_weirs_mob_val" unique="true">
+            <column ascending="true" name="id_weirs"/>
+            <column ascending="true" name="id_order"/>
+            <column ascending="true" name="name_var"/>
+         </index>
+      </table>
+   </tables>
+</database>
